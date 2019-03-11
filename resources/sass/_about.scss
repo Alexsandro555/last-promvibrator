@@ -1,0 +1,61 @@
+.about {
+  background-color: #ffbe00;
+  height: 460px;
+}
+
+.about__content {
+  height: inherit;
+  background: url('#{$path}/about-layer-img-left.png') left top no-repeat, url('#{$path}/about-layer-img-2.png') right bottom no-repeat;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 1.1em;
+  line-height: 1.2;
+}
+
+.theme--light.v-list, .theme--light .v-list.about__list  {
+  background: none;
+}
+
+.about__list .v-list__tile {
+  text-align: left;
+  background: url('#{$path}/footer-list-mark.png') left center no-repeat;
+  color: black;
+}
+
+.about__telephone {
+  color: $color-white;
+  font-size: 1.5em;
+  font-family: $font-gilroy-extrabold;
+}
+
+.about__brands {
+  color: black;
+  padding-top: 10px;
+  font-size: 1em;
+  background: url('#{$path}/heading.png') top center no-repeat;
+  font-family: $font-gilroy-extrabold;
+  font-size: 1.6em;
+  text-transform: uppercase;
+}
+
+.about__head {
+  @extend .headsite;
+  color: black;
+  font-size: 0.9em;
+}
+
+.about__social {
+  font-family: $font-gilroy-extrabold;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  color: black;
+}
+
+.container.grid-list-xs .layout .flex .about__info {
+  font-size: 1.1em;
+  padding-right: 20px;
+}
+
+.about .product-wrapper .product {
+  margin: auto;
+}

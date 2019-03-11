@@ -1,0 +1,57 @@
+footer {
+  height: 355px;
+  background: url('#{$path}/footer-bottom-menu-layout.png') bottom center repeat-x, url('#{$path}/footer-blure-image.png') right 45% top repeat-y, url('#{$path}/footer.png') top left 35% no-repeat, url('#{$path}/footer-layout-img.png') right top repeat,  url('#{$path}/footer-layout-left-main-img.png') left top repeat;
+}
+.footers {
+  padding-top: 30px;
+  color: $color-white;
+}
+
+.application .theme--light.v-list, .theme--light .v-list.menu-left__list.tom {
+  background: none;
+  color: $color-white;
+}
+
+.footer__list .v-list__tile {
+  font-size: 0.9em;
+  text-align: left;
+  background: url('#{$path}/footer-list-mark.png') left center no-repeat;
+}
+
+.footer__list .v-list__tile a {
+  text-decoration: none;
+  color: $color-white;
+  font-size: 1.1em;
+}
+
+.footer__main-site {
+  font-size: 0.9em;
+  text-transform: uppercase;
+  font-family: $font-gilroy-extrabold;
+  line-height: 1.2;
+}
+
+.footer__main-site a {
+  text-decoration: none;
+  color: $color-white;
+}
+
+.footer__main-site a span {
+  text-transform: uppercase;
+  font-size: 2.3em;
+}
+
+.footer__copyright {
+  font-size: 1em;
+  margin-top: 15px;
+}
+
+.footer__links {
+  margin-top: -20px;
+}
+
+.footer__address {
+  max-width: 200px;
+  margin: auto;
+  font-size: 1.1em;
+}

@@ -1,0 +1,22 @@
+<?php
+
+namespace Modules\$MODULE_NAME$\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Modules\$MODULE_NAME$\Models\$NAME$;
+use Illuminate\Routing\Controller;
+use Modules\Initializer\Traits\ControllerTrait;
+use Modules\Initializer\Traits\DefaultTrait;
+
+class $NAME_PLURAL$Controller extends Controller
+{
+	Use ControllerTrait, DefaultTrait;
+
+  public $model;
+  public function __construct()
+  {
+      $this->model=new $NAME$;
+  }
+
+}

@@ -1,0 +1,30 @@
+@import 'top-menu';
+
+header {
+  height: 958px;
+  background: url('#{$path}/header.jpg') top center no-repeat;
+  /*-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 75%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 75%);*/
+}
+
+.header-menu {
+  height: 53px;
+  background:  rgba(0,0,0,0.8);
+  width: 100%;
+}
+
+.header-menu--center {
+  background: url('#{$path}/header-menu-line.png') top center repeat-x;
+}
+
+.header-shadow {
+  //background: url('#{$path}/header-shadow.png') top center no-repeat;
+  //height: 285px;
+}
+
+.header-menu__auth-btn {
+  @extend .content-button;
+  text-transform: none;
+  font-weight: normal;
+  font-size: 0.9em;
+}

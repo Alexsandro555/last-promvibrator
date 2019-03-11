@@ -1,0 +1,16 @@
+.find-input {
+  width: 160px;
+  height: 35px;
+  color: $color-white;
+  font-size: 0.9em;
+  border-radius: 0 4px 4px 0;
+  @include border-radius(0 4px 4px 0);
+  padding: 6px 0 4px 10px;
+  border: 1px solid $color-white;
+  background: url('#{$path}/find-input-left.png') left center no-repeat,
+  url('#{$path}/find-icon.png') 95% center no-repeat;
+}
+
+.find-input::-webkit-input-placeholder {
+  color: $color-white;
+}

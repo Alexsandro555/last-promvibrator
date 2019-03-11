@@ -1,0 +1,19 @@
+<?php
+namespace Modules\$MODULE_NAME$\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Initializer\Traits\RelationTrait;
+use Modules\Initializer\Traits\SortTrait;
+use Modules\Initializer\Traits\TableColumnsTrait;
+use Modules\Initializer\Traits\UrlKeyTrait;
+use Modules\Initializer\Traits\DefaultTrait;
+
+class $NAME$ extends Model
+{
+	use SoftDeletes, RelationTrait, TableColumnsTrait, SortTrait, UrlKeyTrait, DefaultTrait;
+
+	protected $guarded=[];
+
+	protected $dates = ['deleted_at','updated_at'];
+}

@@ -1,0 +1,39 @@
+.content {
+  background: url('#{$path}/content-layout.png') bottom center repeat-x, rgba(255,255,255,1);
+  /*-webkit-clip-path: polygon(0% -10%, 100% 22%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 22%, 100% 100%, 0% 100%);
+  margin-top: -205px;
+  padding-top: 60px;*/
+}
+
+.content-wrapper {
+  overflow: visible;
+  margin-top: -160px;
+  //padding-left: 70px;
+}
+
+.content-cart-wrapper {
+  overflow: visible;
+  margin-top: -70px;
+  min-height: 400px;
+}
+
+.content-button--margin {
+  margin-top: 45px;
+  margin-right: 0px;
+}
+
+.content__product-margin {
+  margin-top: -120px;
+  margin-bottom: 20px;
+  overflow: visible;
+  min-height: 450px;
+}
+
+.content__our-products {
+  margin-left: 20px;
+}
+
+.content__left-our-products {
+  margin-left: 65px;
+}

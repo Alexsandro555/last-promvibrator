@@ -1,0 +1,118 @@
+.product-wrapper {
+  filter: drop-shadow(5px 5px 10px $color-blue-dark);
+  margin-left: 25px;
+  margin-bottom: 30px;
+}
+
+.product-wrapper:first-child {
+  margin-left: 0px;
+}
+
+.product {
+  top: 1px;
+  left: 1px;
+  position: relative;
+  width: 215px;
+  height: 368px;
+  background-color: $color-light-blue;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
+}
+
+.product-image-wrapper {
+  width: 215px;
+  height: 200px;
+  background-color: $color-light-green;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
+  display: block;
+}
+
+.product-image {
+  width: 215px;
+  height: 190px;
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
+  background: url('#{$path}/product-corner.png') top left no-repeat;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.product-image img {
+  margin: 0px auto;
+}
+
+.product__title {
+  padding: 15px 20px 15px 20px;
+  text-align: center;
+  line-height: 1.2;
+  border-bottom: 1px dashed $color-light-green;
+  margin-bottom: 10px;
+}
+
+.product__title a {
+  font-family: $font-gilroy-extrabold;
+  color: $color-blue-dark;
+  text-decoration: none;
+}
+
+
+.product-price-wrapper {
+  color: $color-blue-dark;
+  font-size: 1.2em;
+}
+
+.product-old-price {
+  text-decoration: line-through;
+}
+
+.product-price {
+  font-size: 1.2em;
+  color: $color-blue;
+  font-weight: bold;
+}
+
+.product__sale {
+  background-color: $color-blue;
+  position: absolute;
+  width: 130px;
+  height: 50px;
+  margin-left: 135px;
+  margin-top: 10px;
+  z-index:100;
+  overflow: visible;
+  -webkit-clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 10% 100%, 0% 50%);
+  clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 10% 100%, 0% 50%);
+  font-family: $font-gilroy-extrabold;
+  color: $color-white;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  line-height: 50px;
+}
+
+.product__lable-sale {
+  background-color: $color-blue;
+  position: absolute;
+  width: 130px;
+  height: 50px;
+  margin-left: 135px;
+  margin-top: 10px;
+  z-index:100;
+  overflow: visible;
+  -webkit-clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 10% 100%, 0% 50%);
+  clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 10% 100%, 0% 50%);
+  font-family: $font-gilroy-extrabold;
+  color: $color-white;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  line-height: 50px;
+}
+
+.product__label--img {
+  margin-left: 110px;
+  margin-top: 60px;
+  position: absolute;
+  z-index:100;
+}

@@ -1,0 +1,28 @@
+.theme--light.v-list, .theme--light .v-list.top-menu {
+  background: none;
+  color: $color-white;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.top-menu__item {
+  display: inline-block;
+  background: url('#{$path}/menu-divider.png') left center no-repeat;
+}
+
+.top-menu__item:first-child {
+  background: none;
+}
+
+.top-menu__item .v-list__tile {
+  height: 52px;
+  text-transform: uppercase;
+  font-size:0.99em;
+}
+
+.top-menu__item .v-list__tile a {
+  padding-left: 14px;
+  text-decoration: none;
+  color: $color-white;
+  font-family: $font-gilroy-extrabold;
+}

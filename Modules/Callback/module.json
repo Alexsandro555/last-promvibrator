@@ -1,0 +1,16 @@
+{
+    "name": "Callback",
+    "alias": "callback",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Callback\\Providers\\CallbackServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}

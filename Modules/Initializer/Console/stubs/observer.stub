@@ -1,0 +1,53 @@
+<?php
+namespace Modules\$MODULE_NAME$\Observers;
+
+use Illuminate\Support\Facades\Event;
+use Modules\$MODULE_NAME$\Models\$NAME$;
+
+
+class $NAME$Observer
+{
+    public function creating($NAME$ $$NAME_SNAKE$)
+    {
+    }
+    public function created($NAME$ $$NAME_SNAKE$)
+    {
+
+    }
+    public function saving($NAME$ $$NAME_SNAKE$)
+    {
+
+    }
+    public function saved($NAME$ $$NAME_SNAKE$)
+    {
+
+    }
+    public function updating($NAME$ $$NAME_SNAKE$)
+    {
+
+    }
+    public function updated($NAME$ $$NAME_SNAKE$)
+    {
+
+    }
+    public function deleting($NAME$ $$NAME_SNAKE$)
+    {
+
+    }
+    public function deleted($NAME$ $$NAME_SNAKE$)
+    {
+
+    }
+    public function restoring($NAME$ $$NAME_SNAKE$)
+    {
+
+    }
+    public function restored($NAME$ $$NAME_SNAKE$)
+    {
+
+    }
+    public function retrieved($NAME$ $$NAME_SNAKE$)
+    {
+
+    }
+}

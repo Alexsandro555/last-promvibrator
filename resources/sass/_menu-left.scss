@@ -1,0 +1,142 @@
+.menu-wrapper {
+  position:relative;
+}
+
+.menu-left {
+  width: 213px;
+  background:  url('#{$path}/menu-left-layer-img.png') left bottom no-repeat, url('#{$path}/header-menu-line.png') top center repeat-x, rgba(255,255,255,1) ;
+  //background: url('#{$path}/menu-left-layer-img.png') left center no-repeat;
+}
+
+.menu-left--shadow {
+  @include box-shadow(0, 0, 10px, rgba(0,0,0,0.5));
+}
+
+.menu-left__header {
+  font-family: $font-gilroy-extrabold;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: $color-blue-dark;
+  text-align: center;
+  padding: 10px;
+}
+
+.theme--light.v-list, .theme--light .list.menu-left__list {
+  background: none;
+  padding: 0;
+}
+
+.menu-left__list .v-list__tile {
+  font-size: 1em;
+  color: $color-blue-dark;
+  text-align: left;
+  min-width: 213px;
+}
+
+
+.theme--light .menu-left__list a:hover {
+  background-color: $color-blue;
+  color: $color-white;
+}
+
+.menu-left__list--text {
+  background: url('#{$path}/footer-list-mark.png') left center no-repeat;
+  padding-left: 20px;
+}
+
+.menu-left__list--text a {
+  text-decoration: none;
+  color: $color-blue-dark;
+  font-size: 1.2em;
+}
+
+.menu-left__list .v-list__tile:hover a {
+  color: $color-white;
+}
+
+.menu-left__sub__list--text {
+  background: url('#{$path}/menu-left-marker.png') left center no-repeat;
+  padding-left: 20px;
+  max-width: 200px;
+}
+
+.menu-left__list--text:hover {
+  background: url('#{$path}/menu-left-marker.png') left center no-repeat;
+}
+
+.menu-left__sub--light .v-list__tile {
+  background-color: $color-blue;
+  color: $color-white;
+}
+
+.menu-left__sub--dark .v-list__tile {
+  background-color: $color-blue-light-dark;
+  color: $color-white;
+}
+
+.menu-left__sub .v-list__tile:hover {
+  background-color: $color-blue-light-dark;
+}
+
+.application .theme--light.v-list, .theme--light .v-list.menu-left__list.tom {
+  background-color: $color-blue;
+}
+
+.menu-left__sub__list--text  a {
+  text-decoration: none;
+  color: $color-white;
+  font-size: 1.1em;
+}
+
+.price-wrapper {
+  height: 134px;
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: $color-blue-light;
+  -webkit-clip-path: polygon(0% 0%, 50% 20%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 50% 20%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.price {
+  height: 108px;
+  background-color: $color-blue;
+  -webkit-clip-path: polygon(0% 0%, 50% 20%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 50% 20%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.container.grid-list-xs .layout .flex.price__download {
+  padding-top: 37px;
+  font-family: $font-gilroy-extrabold;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  color: $color-white;
+  line-height: 1.1;
+}
+
+.price__download--next {
+  font-size: 1.4em;
+}
+
+.container.grid-list-xs .layout .flex.price__img{
+  padding-top: 20px;
+}
+
+.abs-position {
+  position: absolute;
+  margin-top: -880px;
+}
+
+.abs-position-catalog {
+  position: absolute;
+  margin-top: -840px;
+}
+
+.v-menu__activator--active {
+  background-color: $color-blue;
+  color: $color-white;
+}
+
+.menu-left__sub--dark .v-list__tile .v-menu__activator--active {
+  background-color: $color-blue-light-dark;
+  color: $color-white;
+}

@@ -1,0 +1,10 @@
+<?php
+
+Route::group(['middleware' => ['web','auth'], 'prefix' => '$TABLE$', 'namespace' => 'Modules\$MODULE_NAME$\Http\Controllers'], function()
+{
+	Route::get('/', '$NAME_PLURAL$Controller@index');
+	Route::post('/', '$NAME_PLURAL$Controller@load');
+	Route::delete('/', '$NAME_PLURAL$Controller@delete');
+	Route::patch('/', '$NAME_PLURAL$Controller@save');
+	// Route::post('/search', '$NAME_PLURAL$Controller@search');
+});

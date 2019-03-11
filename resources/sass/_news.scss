@@ -1,0 +1,41 @@
+.news {
+  background: url('#{$path}/content-layout.png') bottom center repeat-x, rgba(255,255,255,1);
+  height: 360px;
+}
+
+.news__content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.news__number {
+  font-family: $font-gilroy-extrabold;
+  font-size: 3em;
+  color: $color-yellow;
+}
+
+.news__date {
+  font-family: $font-gilroy-extrabold;
+  font-size: 0.5em;
+  color: $color-blue-dark;
+}
+
+.news__link {
+  font-family: $font-gilroy-extrabold;
+  font-size: 1.1em;
+  color: $color-blue-dark;
+}
+
+.news__big-image {
+  position: relative;
+}
+
+.news__big-image img {
+  position: absolute;
+  margin-top: -80px;
+  margin-left: -300px;
+}
+
+.container.grid-list-xs .layout .flex .news__block {
+  padding-right: 20px;
+}

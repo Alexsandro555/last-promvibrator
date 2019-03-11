@@ -1,0 +1,7 @@
+import { PRIVATE } from "@$LOWER_MODULE_NAME$/constants";
+
+export default {
+    /*[PRIVATE.MUTATION]: (state, payload) => {
+
+    }*/
+}

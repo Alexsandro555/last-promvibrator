@@ -1,0 +1,62 @@
+.detail__advanced-info {
+  color: $color-blue-dark;
+}
+
+.detail__advanced-info h2 {
+  font-family: $font-gilroy-extrabold;
+  text-transform: uppercase;
+}
+
+.detail__characteristics .tabs__container{
+  background-color: $color-blue-dark;
+  color: $color-white;
+  font-family: $font-gilroy-extrabold;
+}
+
+.detail__characteristics .tabs__item {
+  color: $color-white;
+}
+
+.detail__characteristics .tabs__item--active {
+  background-color: $color-yellow;
+}
+
+.detail__padding {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.detail__characteristics-description {
+  text-align: left;
+  min-height: 200px;
+  @extend .detail__padding;
+}
+
+.detail__characteristics-characteristics {
+  text-align: left;
+  @extend .detail__padding;
+}
+
+@supports (display: grid) {  /* если браузер поддерживает Гриды */
+  @media (min-width: 14em) {  /* если окно браузера больше 14em */
+    .detail__characteristics-characteristics dl {
+      display: grid;
+      grid-template-columns: auto 1fr;  /* auto определяет ширину первой колонки, которая равна самому широкому элементу <dt> (auto можно заменить на fit-content(10em), если необходимо её ограничить) */
+    }
+    .detail__characteristics-characteristics dt {
+      min-width: 0;  /* более привычное поведение при переполнении */
+    }
+    .detail__characteristics-characteristics dd {
+      margin: 0 0 0 1em;
+      font-weight: bold;
+    }
+  }
+}
+
+.detail__characteristics-characteristics-attributes {
+}
+
+.detail__characteristics--value {
+  padding-left: 20px;
+}
+

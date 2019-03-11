@@ -1,0 +1,22 @@
+.telephone {
+  color: $color-white;
+}
+
+.telephone__number {
+  font-size: 2.1em;
+  font-family: $font-gilroy-extrabold;
+}
+
+.telephone__link {
+  color: $color-blue;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  text-decoration: none;
+  border-bottom: 2px solid $color-yellow;
+  font-family: $font-gilroy-extrabold;
+}
+
+.telephone__img {
+  display: inline-block;
+  vertical-align: middle;
+}

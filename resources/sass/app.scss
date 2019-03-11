@@ -1,0 +1,140 @@
+.application.theme--light.leader {
+  background-color: #dcecf7;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.wrapper {
+  width: 1200px;
+  margin: auto;
+}
+
+// Fonts
+@import 'font';
+
+// Variables
+@import 'variables';
+
+// Mixins
+@import 'mixins';
+
+/* Начало Buttons */
+.content-button {
+  display: inline-block;
+  background: none;
+  border: 1px dashed $color-blue;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: $color-blue;
+  @include border-radius(6px);
+  text-decoration: none;
+  padding: 4px 8px;
+  margin-top: 10px;
+  margin-right: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/* Конец Buttons */
+
+
+.abort {
+  min-height: 300px;
+}
+
+@import 'header';
+@import 'telephone';
+
+.top-20 {
+  margin-top: 20px;
+}
+
+.left-10 {
+  margin-left: 10px;
+}
+
+.bottom-20 {
+  margin-bottom: 20px;
+}
+
+@import 'find';
+
+.headsite {
+  color: $color-blue-dark;
+  padding-top: 10px;
+  font-size: 1em;
+  background: url('#{$path}/heading.png') top left no-repeat;
+}
+
+.headsite span {
+  font-family: $font-gilroy-extrabold;
+  font-size: 2.2em;
+  text-transform: uppercase;
+}
+
+.figure-button {
+  display: inline-block;
+  padding: 5px 20px;
+  background-color: $color-blue;
+  color: $color-white;
+  font-family: $font-gilroy-extrabold;
+  text-decoration: none;
+  height: 31px;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 0%);
+  clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+  text-transform: uppercase;
+}
+
+.figure-button__wrapper {
+  display: table;
+  background: url('#{$path}/order-btn-circule-layout.png') center center no-repeat;
+  height: 60px;
+}
+
+.figure-button__wrapper-2 {
+  display: table-cell;
+  height: 31px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.button-ask-sale__wrapper {
+  display: table;
+  height: 60px;
+}
+
+.button-ask-sale__wrapper-2 {
+  display: table-cell;
+  height: 31px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.button-ask-sale {
+  @extend .figure-button;
+  background-color: $color-yellow;
+}
+
+.btn-sale {
+  margin-right: 10px;
+}
+
+
+@import 'v-cloak';
+
+@import 'menu-left';
+@import 'content';
+@import 'product';
+@import 'best-sale';
+@import 'about';
+@import 'news';
+@import 'detail';
+@import 'detail_characteristics';
+@import 'SEO.scss';
+@import 'breadcrumbs';
+@import 'brand';
+@import 'left-banner';
+@import 'footer';
+@import '~cartScss/cart';
+@import '~articleScss/articles';
+@import 'form';

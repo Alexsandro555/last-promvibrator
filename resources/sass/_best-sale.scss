@@ -1,0 +1,15 @@
+.best-sale {
+  background: url('#{$path}/best-sale.png') top center repeat;
+  height: 500px;
+  clip-path: polygon(0% 0%, 49% 0%, 50% 5%, 51% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.headsite_best-sale {
+  @extend  .headsite;
+  color: $color-white;
+}
+
+.best-sale .wrapper {
+  padding-top: 20px;
+  background: url('#{$path}/best-sale-line-layout.png') top right repeat-y;
+}

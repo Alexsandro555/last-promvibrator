@@ -1,0 +1,59 @@
+.order {
+  margin-top: -140px;
+}
+
+.order-form {
+  margin: auto;
+  width: 560px;
+  padding-bottom: 40px;
+}
+
+.sbmt-order {
+  vertical-align: bottom;
+  background-color: #e27232;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: inline-block;
+  @include border-radius(20px);
+  color: white;
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+
+
+
+
+.order-center {
+  text-align: center;
+}
+
+.order-required {
+  color: #494949;
+  font-size: 1em;
+}
+
+.order__tab-contact {
+  width: 50%;
+  height: 100px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  background-color: #494949;
+  color: #FFFFFF;
+  font-family: "PTSans-Bold", sans-serif;
+  font-size: 1.2em;
+}
+
+.order__tab-delivry {
+  width: 49.5%;
+  height: 100px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  background-color: #494949;
+  color: #FFFFFF;
+  font-family: "PTSans-Bold", sans-serif;
+  font-size: 1.2em;
+}

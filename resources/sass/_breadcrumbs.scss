@@ -1,0 +1,38 @@
+.breadcrumbs {
+  list-style-type: none;
+  //background-color: $color-white;
+}
+
+.breadcrumb {
+  list-style-type: none;
+}
+
+.breadcrumb li {
+  background: url('#{$path}/footer-list-mark.png') left center no-repeat;
+  padding-left: 20px;
+  padding-right: 10px;
+  display:inline-block;
+}
+
+.breadcrumb li.breadcrumb__item:nth-child(2n) {
+  //padding-left: 20px;
+}
+
+.breadcrumbs .wrapper li:nth-child(2n) {
+  padding-left: 20px;
+}
+
+.breadcrumb li:first-child {
+  background: none;
+  padding-left: 0px;
+}
+
+.breadcrumb li.active {
+  color: $color-blue;
+}
+
+.breadcrumb li a {
+  text-decoration: none;
+  color: black;
+}
+

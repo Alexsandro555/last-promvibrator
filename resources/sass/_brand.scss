@@ -1,0 +1,12 @@
+.brands {
+  display: inline-block;
+  background-color: $color-white;
+  width: 262px;
+  height: 198px;
+  -webkit-clip-path: polygon(0% 20%, 50% 0%, 100% 20%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 20%, 50% 0%, 100% 20%, 100% 100%, 0% 100%);
+}
+
+.brands img {
+  margin-top: 40px;
+}
