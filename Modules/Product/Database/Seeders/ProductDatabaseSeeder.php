@@ -24,7 +24,7 @@ class ProductDatabaseSeeder extends Seeder
     $this->call(TypeProductTableSeeder::class);
     $this->call(LineProductTableSeeder::class);
     $this->call(AttributeTypeTableSeeder::class);
-    $this->call(AttributeUnit::class);
-    $this->call(AttributeGroup::class);
+    $this->call(AttributeUnitTableSeeder::class);
+    $this->call(AttributeGroupTableSeeder::class);
   }
 }
