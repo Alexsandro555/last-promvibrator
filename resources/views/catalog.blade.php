@@ -1,73 +1,88 @@
 @extends('layouts.master')
 
-@section('menu')
-  <div class="menu-wrapper wrapper">
-    <div class="abs-position">
-      <left-menu :prop-toggle="false"></left-menu>
+@section('title', 'ПРОМВИБРАТОР.РУ.'.$typeProduct->title.' cписок.')
+
+@section('sidebar')
+  @foreach($typeProduct->lineProducts as $lineProduct)
+    <div class="content-left-menu">
+      <a href="/{{$lineProduct->url_key}}" class="partition">{{$lineProduct->title}}</a>
+      @foreach($lineProduct->attributes as $attribute)
+        @if($attribute->filterable)
+          <a href="{{$attribute->url_key}}">
+            {{$attribute->title}}
+            <img src="{{asset('css/images/hover-menu.png')}}" alt="arrow"/>
+          </a>
+        @endif
+      @endforeach
     </div>
-  </div>
-@endsection
+  @endforeach
+  <div class="content-left-menu"></div>
+  @include('sidebar',['articles' => $articles])
+@stop
 
 @section('content')
-  <div class="content">
-    <div class="wrapper content__product-margin">
-      <div class="breadcrumbs">
-        <div class="wrapper">
-          <v-flex xs12 text-xs-left>
-            {{ Breadcrumbs::render() }}
-          </v-flex>
-        </div>
+  <div>
+    <div id="content">
+      <div class="content-right-navtral">
+        @foreach($breadcrumbs as $key => $breadcrumb)
+          @if(!$loop->last)
+            <a href="{{$breadcrumb->slug}}">{{$breadcrumb->title}}</a>
+            <img src="{{asset('/css/images/arrow-right.png')}}" class="img-arrow"/>
+          @else
+            {{$breadcrumb->title}}
+          @endif
+        @endforeach
       </div>
-      <v-flex xs12 text-xs-left class="top-20 bottom-20">
-        <p class="headsite">
-          <span>{{$typeProduct->title}}</span><br>
-        </p>
-        <v-layout row wrap>
-          @foreach($products as $product)
-            <div class="product-wrapper">
-              <div class="product">
-                <div class="product-image-wrapper">
-                  <div class="product-image">
-                    @if($product->files->count()>0)
-                      @foreach($product->files as $fileRecord)
-                        @foreach($fileRecord->config as $files)
-                          @foreach($files as $key => $file)
-                            @if($key == 'medium')
-                              <img src="/storage/{{$file['filename']}}"/>
-                            @endif
-                          @endforeach
-                        @endforeach
-                        @break
-                      @endforeach
-                    @else
-                      <img src="{{asset('images/no-image-medium.png')}}"/>
-                    @endif
-                  </div>
-                </div>
-                <div class="product__title">
-                  <a href="/catalog/detail/{{$product->url_key}}">
-                    {{str_limit($product->title, $limit = 27, $end="...")}}
-                  </a>
-                </div>
-                <v-layout row wrap>
-                  <v-flex xs8 text-xs-center>
-                    <span class="product-old-price">{{$product->price}} руб.</span><br>
-                    <span class="product-price-wrapper">
-                    <span class="product-price">{{$product->price}}</span> руб.</span>
-                  </v-flex>
-                  <v-flex xs4>
-                    <img src="{{asset('images/btn-sale.png')}}"/>
-                  </v-flex>
-                </v-layout>
-              </div>
+      <br>
+      <ul class="content-right-tab-ul content-right-tab-ul-a">
+        @foreach($products as $product)
+          <li>
+            <div class="tab-li-stiker-hit"></div>
+            @if($product->onsale)
+              <div class="tab-li-stiker-sale"></div>
+            @endif
+            <div class="tab-li-title">
+              <a href="/{{$typeProduct->url_key}}.php?id={{$product->old_id}}">{{$product->title}}</a>
             </div>
-          @endforeach
-        </v-layout>
-      </v-flex>
+            <div class="tab-li-img">
+              <a href="/{{$product->url_key}}">
+                @foreach($product->files as $file)
+                  @foreach($file->config as $filesItem)
+                    @foreach($filesItem as $key=>$fileItem)
+                      @if($key === "medium")
+                        <img src="{{asset('/storage/'.$fileItem["filename"])}}" alt="">
+                        @break
+                      @endif
+                    @endforeach
+                  @endforeach
+                  @break
+                @endforeach
+              </a>
+            </div>
+            <div class="tab-li-info">
+              <?php $counter=1; ?>
+              @foreach($product->attributes as $attribute)
+                @if($attribute->pivot->value)
+                  {{$attribute->title}}: <b> {{$attribute->pivot->value}}</b><br/>
+                  <?php $counter++; if($counter>3) break;?>
+                @endif
+              @endforeach
+            </div>
+            <div class="tab-li-price">
+              {{$product->price}}&#8381;
+            </div>
+            <div class="tab-li-button">
+              <input class="cart-submit" type="submit" value="В корзину" @click.prevent="addCart({{$product->id}})" >
+              <input class="cart-col product_qty2" name="Name" id="prod-{{$product->id}}" type="text" value="1">
+              <div class="div-minus" @click.prevent="downQty({{$product->id}})">-</div>
+              <div class="div-plus" @click.prevent="upQty({{$product->id}})">+</div>
+            </div>
+          </li>
+        @endforeach
+      </ul>
     </div>
   </div>
-  <div class="best-sale">
-    <div class="wrapper">
-    </div>
+  <div class="content-links">
+    {{ $products->links() }}
   </div>
-@endsection
+@stop

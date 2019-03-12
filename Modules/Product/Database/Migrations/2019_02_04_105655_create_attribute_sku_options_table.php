@@ -24,6 +24,7 @@ class CreateAttributeSkuOptionsTable extends Migration
       $table->foreign('sku_id')->references('id')->on('skus')->onDelete('cascade');
       $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
       $table->foreign('attribute_list_value_id')->references('id')->on('attribute_list_values')->onDelete('cascade');
+      $table->softDeletes();
     });
   }
 

@@ -7,19 +7,6 @@ window.Vue = Vue
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
-//==========Vuetify========================================
-import Vuetify from 'vuetify'
-// Импорт CSS-файлов, которые могут потребоваться
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import 'vuetify/dist/vuetify.min.css'
-import createStore from "./vuex/states";
-Vue.use(Vuetify)
-
-import LeftMenu from '@/vue/LeftMenu'
-Vue.component('left-menu', LeftMenu)
-
-import DetailImage from '@file/vue/DetailImage'
-Vue.component('detail-image', DetailImage)
 
 import { mapActions, mapMutations } from 'vuex'
 import {ACTIONS, MUTATIONS} from '@cart/constants'

@@ -21,6 +21,7 @@ class CreateLineProductProducerTable extends Migration
           $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
           $table->foreign('producer_id')->references('id')->on('producers')->onDelete('cascade');
           $table->foreign('line_product_id')->references('id')->on('line_products')->onDelete('cascade');
+          $table->softDeletes();
         });
     }
 

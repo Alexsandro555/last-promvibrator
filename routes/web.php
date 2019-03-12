@@ -12,9 +12,7 @@
 */
 
 Route::get('/', 'SiteController@index')->name('main');
-Route::get('/menu-left', 'SiteController@menuLeft');
 
-Route::get('/catalog/{slug}', ['uses'=>'SiteController@catalog', 'as'=>'catalog.type-product']);
 Route::get('/catalog/detail/{slug}',['uses' => 'SiteController@detail', 'as' => 'catalog.detail']);
 Route::get('/catalog/{slugTypeProduct}/{slugLineProduct}', ['uses' => 'SiteController@lineProduct', 'as'=>'catalog.line-product']);
 
@@ -30,4 +28,4 @@ Route::get('/find/{text?}', ['uses' => 'FindController@index', 'as' => 'find']);
 
 
 //Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/{slug}', '\Modules\Page\Http\Controllers\PagesController@show');
+Route::get('/{slug}', ['uses' => 'SiteController@catalogTypes', 'as'=> 'catalog-products']);

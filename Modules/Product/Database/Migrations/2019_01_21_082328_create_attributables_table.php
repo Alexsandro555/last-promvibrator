@@ -19,6 +19,7 @@ class CreateAttributablesTable extends Migration
       $table->integer('attribute_id')->length(11)->unsigned();
       $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
       $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+      $table->softDeletes();
     });
   }
 

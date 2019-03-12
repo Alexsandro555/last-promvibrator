@@ -29,6 +29,7 @@ class CreateAttributeValuesTable extends Migration
       $table->timestamps();
       $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
       $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+      $table->softDeletes();
     });
 
     DB::statement("ALTER TABLE `$this->tableName` comment 'Значения атрибутов'");

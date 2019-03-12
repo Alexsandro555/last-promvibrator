@@ -2,136 +2,115 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{asset('css/images/favicon.ico')}}" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="{{asset('css/normalize-2.1.2.css')}}">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800,300italic,400italic,800italic,600italic,700italic' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" href="{{asset('css/vuetify.min.css')}}">
-  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
   @yield('view.style')
   <title>@yield('title')</title>
 </head>
 <body>
-<div id="app" v-cloak>
-  <span class="v-cloak--block"></span>
-  <v-app class="v-cloak--hidden leader">
-    <v-container pa-0 fluid grid-list-xs text-xs-center>
-      <v-layout column wrap>
-        <header>
-          <!--Верхнее меню-->
-          <div class="header-menu hidden-sm-and-down">
-            <div class="wrapper header-menu--center">
-              <v-layout row wrap>
-                <v-flex xs8 text-xs-left>
-                  <v-list class="top-menu">
-                    <v-list-tile class="top-menu__item"><a href="/about">О компании</a></v-list-tile>
-                    <v-list-tile class="top-menu__item"><a href="/article/list">Статьи</a></v-list-tile>
-                    <v-list-tile class="top-menu__item"><a href="/equipment">Оборудование</a></v-list-tile>
-                    <v-list-tile class="top-menu__item"><a href="/delivery">Доставка и оплата</a></v-list-tile>
-                    <v-list-tile class="top-menu__item"><a href="/contacts">Контакты</a></v-list-tile>
-                  </v-list>
-                </v-flex>
-                <v-flex xs4 text-xs-right>
-                  <auth-widget/>
-                </v-flex>
-              </v-layout>
-            </div>
-            <div class="wrapper header-shadow">
-              <v-layout row wrap>
-                <v-flex class="telephone top-20" xs5 text-xs-right>
-                  Работаем с <b>{{config('info.time_start')}}</b> до <b>{{config('info.time_end')}}</b><br>
-                  <span class="telephone__number">{{config('info.telephone')}}</span><br>
-                  <img class="telephone__img" src="{{asset('images/telephone-img.png')}}" align="middle"/>
-                  <a class="telephone__link" @click="showCallback">заказать звонок</a>
-                </v-flex>
-                <v-flex xs2 text-xs-center class="top-20">
-                  <a href="/"><img src="{{asset('images/logo.png')}}"/></a>
-                </v-flex>
-                <v-flex xs4 text-xs-left class="find top-20">
-                  <input placeholder="Поиск по сайту" @keyup.enter="search" v-model="searchText" class="find-input" type="text"><br><br>
-                  <v-layout row wrap>
-                    <v-flex xs2 text-xs-center>
-                      <a href="/cart"><img src="{{asset('images/cart.png')}}" align="middle"/></a>
-                    </v-flex>
-                    <cart-widget/>
-                  </v-layout>
-                </v-flex>
-              </v-layout>
-            </div>
-          </div>
-          <!--Конец верхнего меню-->
-        </header>
-        @yield('menu')
-        @yield('content')
-        <footer>
-          <div class="wrapper footers">
-            <div>
-              <v-layout row wrap>
-                <v-flex xs3 class="footer__main-site text-xs-right">
-                  <v-flex xs11>
-                    <a href="#">
-                      <span text-xs-left>Посетить</span><br>
-                      оффициальный сайт
-                    </a>
-                  </v-flex>
-                  <v-flex xs2></v-flex>
-                </v-flex>
-                <v-flex xs2 text-xs-left>
-                  <a href="#"><img src="{{asset('images/social-f.png')}}"/></a>
-                  <a href="#"><img src="{{asset('images/social-t.png')}}"/></a>
-                  <a href="#"><img src="{{asset('images/social-ok.png')}}"/></a>
-                  <a href="#"><img src="{{asset('images/social-v.png')}}"/></a>
-                  <a href="#"><img src="{{asset('images/social-y.png')}}"/></a>
-                </v-flex>
-                @foreach($typeProducts->chunk(4) as $chunkTypeProduct)
-                  <v-flex xs2 class="footer__links">
-                    <v-list class="footer__list">
-                      @foreach($chunkTypeProduct as $typeProduct)
-                        <v-list-tile>
-                          <a href="/catalog/{{$typeProduct->url_key}}">{{$typeProduct->title}}</a>
-                        </v-list-tile>
-                      @endforeach
-                    </v-list>
-                  </v-flex>
-                @endforeach
-                <v-flex xs3>
-                  <img text-align-center src="{{asset('images/logo-footer.png')}}"/><br>
-                  <span class="telephone__number">{{config('info.telephone')}}</span><br>
-                  <img class="telephone__img" src="{{asset('images/telephone-img.png')}}" align="middle"/>
-                  <a class="telephone__link" @click="showCallback">заказать звонок</a>
-                  <div text-xs-center class="footer__address">
-                    {{config('info.address')}}
-                  </div>
-                </v-flex>
-              </v-layout>
-            </div>
-            <div>
-              <br>
-              <v-layout row wrap>
-                <v-flex xs4 class="footer__copyright">
-                  Copyright 2018. Все права защищены
-                </v-flex>
-                <v-flex xs8 text-xs-right>
-                  <v-list class="top-menu">
-                    <v-list-tile class="top-menu__item"><a href="/about">О компании</a></v-list-tile>
-                    <v-list-tile class="top-menu__item"><a href="/news/list">Новости</a></v-list-tile>
-                    <v-list-tile class="top-menu__item"><a href="/equipment">Оборудование</a></v-list-tile>
-                    <v-list-tile class="top-menu__item"><a href="/delivery">Доставка и оплата</a></v-list-tile>
-                    <v-list-tile class="top-menu__item"><a href="/contacts">Контакты</a></v-list-tile>
-                  </v-list>
-                </v-flex>
-              </v-layout>
-            </div>
-          </div>
-        </footer>
-      </v-layout>
-    </v-container>
+<div class="wraper" id="app">
+  <header class="header">
+    <div class="header-top">
+      <div class="header-top-a">
+        <a href="/">Главная</a>
+        <a href="/akzia.php">Акция</a>
+        <a href="/order.php">Заказ</a>
+        <a href="">Партнеры</a>
+        <a href="/contacts.html">Контакты</a>
+      </div>
+      <div class="header-top-b">
+        <a class="header-top-b-l" href="#">Личный кабинет</a>
+        <cart-widget/>
+      </div>
+    </div>
+    <div class="header-center">
+      <a class="header-logo" href="/"></a>
+      <div id="basket"></div>
+      <div class="header-center-phone"><span>+7 (495)</span> 780-47-96</div>
+      <div class="header-center-time">Промышленные<br />площадочные<br>вибраторы</div>
+      <a class="header-center-callback2"  href="mailto:info@promvibrator.ru">info@promvibrator.ru</a>
+      <div id="callback_fixel" style="display:none;"></div>
+      <div id="callback" style="display:none;">
+        <div class="callback_close"></div>
+        <strong>Обратный звонок</strong>
+        <input class="callback-phone" name="Name" type="text" value="" placeholder="Телефон">
+        <input class="callback-name" name="Name" type="text" value="" placeholder="Ваше имя">
+        <input class="callback-submit" type="submit" value="Отправить">
+      </div>
+
+      <div class="header-center-search">
+        <span class="span-big">Поиск по каталогу:</span><br>
+        <input name="name" type="text" value=""><br>
+        <span class="span-small">Например: </span> вибратор взрывозащищенной серии
+      </div>
+    </div>
+    <div class="header-menu">
+      <a class="header-menu-a-a" href="/mve/">Площадочные<br>вибраторы OLI</a>
+      <a class="header-menu-a-b" href="/pnevmo/">Пневматические<br>вибраторы</a>
+      <a class="header-menu-a-c" href="/aeration/">Системы<br />виброаэрации </a>
+      <a class="header-menu-a-d" href="/concrete/">Глубинные<br />вибраторы</a>
+      <a class="header-menu-a-e" href="/hydro/">Гидравлические<br />вибраторы</a>
+      <a class="header-menu-a-f">Виброрейки</a>
+      <a class="header-menu-a-h">Виброплощадки</a>
+      <a class="header-menu-a-j">Трамбовки</a>
+    </div>
+  </header>
+  <div class="content">
+    <div class="content-left">
+      @yield('sidebar')
+    </div>
+    <div class="content-right">
+      @yield('content')
+    </div>
     <cart-modal></cart-modal>
-    <callback></callback>
-  </v-app>
+  </div>
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-top-block-a">
+        <div class="footer-top-block-title">О магазине</div>
+        <a href="">Доставка и оплата</a><br>
+        <a href="">Возврат</a><br>
+        <a href="">Статьи</a><br>
+        <a href="">Контакты</a><br>
+      </div>
+
+      <div class="footer-top-block-b">
+        <div class="footer-top-block-title">Каталог</div>
+        <a href="">Площадочные вибраторы</a><br>
+        <a href="">Классическая серия</a><br>
+        <a href="">Взрывозащищенная серия</a><br>
+        <a href="">Со семными крышками</a><br>
+        <a href="">Пневматические вибраторы</a><br>
+        <a href="">Глубинные вибраторы</a><br>
+        <a href="">Виброрейки</a><br>
+      </div>
+
+      <div class="footer-top-block-c">
+        <div class="footer-top-block-title">Мы в соц сетях</div>
+        <a class="footer-top-block-с-a" href="">В контакте</a><br>
+        <a class="footer-top-block-с-b" href="">Однокласники</a><br>
+        <a class="footer-top-block-с-c" href="">Facebook</a><br>
+      </div>
+      <a class="logo-bottom" href=""><img src="{{asset('css/images/logo-bottom.png')}}" alt="logo"></a>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-copy">&copy; 2018 Promvibrator.ru</div>
+      <div class="footer-bottom-menu">
+        <a href="">Главная</a>
+        <a href="">Заказ</a>
+        <a href="">Партнеры</a>
+        <a href="">Контакты</a>
+      </div>
+      <div class="footer-bottom-phone">+7 (495) 780-47-96</div>
+      <a class="footer-bottom-callback" href="">заказать звонок</a>
+    </div>
+  </footer>
 </div>
-<script src="{{mix('/js/main.js')}}" type="application/javascript"></script>
+<script src="{{asset('js/main.js')}}" type="application/javascript"></script>
+@yield('view.scripts')
 </body>
 </html>

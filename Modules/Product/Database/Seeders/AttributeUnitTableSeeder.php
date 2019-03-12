@@ -61,6 +61,11 @@ class AttributeUnitTableSeeder extends Seeder
           'title' => 'кВт',
           'url_key' => 'kvt',
           'sort' => 9
+        ],
+        [
+          'title' => 'А',
+          'url_key' => 'a',
+          'sort' => 2
         ]
       ]);
     }
