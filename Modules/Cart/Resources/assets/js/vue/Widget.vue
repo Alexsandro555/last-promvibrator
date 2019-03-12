@@ -1,8 +1,7 @@
 <template>
-    <v-flex xs6 text-align-left class="cart__info">
-        <span class="cart__gold">{{count}}</span> товара на<br>
-        <span class="cart__gold">{{total}}</span> руб.
-    </v-flex>
+    <span>
+         <slot :count="count" :total="total"></slot>
+    </span>
 </template>
 <script>
     import { ACTIONS, MUTATIONS, GETTERS } from "@cart/constants"

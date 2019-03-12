@@ -23,8 +23,16 @@
         <a href="/contacts.html">Контакты</a>
       </div>
       <div class="header-top-b">
-        <a class="header-top-b-l" href="#">Личный кабинет</a>
-        <cart-widget/>
+        <a class="header-top-b-l" href="/admin">Личный кабинет</a>
+        <cart-widget>
+          <template slot-scope="slotProps">
+            <span>
+              <a @click.prev="showCartModal" href="#">
+                @{{slotProps.count}} товар(ов), @{{slotProps.total}} руб.
+              </a>
+            </span>
+          </template>
+        </cart-widget>
       </div>
     </div>
     <div class="header-center">
