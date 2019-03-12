@@ -26,6 +26,10 @@ Route::get('/find/{text?}', ['uses' => 'FindController@index', 'as' => 'find']);
 //Auth::routes();
 //Route::post('/register', 'Auth\RegisterController@create');
 
+Route::get('/test', function() {
+  $result = \Modules\Product\Classes\VibratorParentType::with('lineProducts')->get();
+  dd($result);
+});
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{slug}', ['uses' => 'SiteController@catalogTypes', 'as'=> 'catalog-products']);

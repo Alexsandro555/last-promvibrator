@@ -49,7 +49,7 @@ class Vibrators
         $item["old_id"] = $vibratorType->id;
         $item["name"] = $vibratorParentType->name;
         $item["parent_id"] = $result->id;
-        $item['id'] = $result->id;
+        $item['id'] = $vibratorType->id;
         $arrVibratorsTypes[] = $item;
       }
     }
