@@ -65,7 +65,27 @@ class AttributeUnitTableSeeder extends Seeder
         [
           'title' => 'А',
           'url_key' => 'a',
-          'sort' => 2
+          'sort' => 10
+        ],
+        [
+          'title' => 'обор./мин.',
+          'url_key' => 'obor-min',
+          'sort' => 11
+        ],
+        [
+          'title' => 'Вт',
+          'url_key' => 'vt',
+          'sort' => 12
+        ],
+        [
+          'title' => 'мм',
+          'url_key' => 'mm',
+          'sort' => 13
+        ],
+        [
+          'title' => 'кг/мм',
+          'url_key' => 'kg-mm',
+          'sort' => 14
         ]
       ]);
     }

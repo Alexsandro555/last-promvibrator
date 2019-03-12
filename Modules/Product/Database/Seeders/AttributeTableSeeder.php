@@ -63,7 +63,7 @@ class AttributeTableSeeder extends Seeder
           'sort' => 6,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 13,
-          'attribute_group_id' => 4
+          'attribute_group_id' => 1
         ],
         [
           'title' => 'Размер B',
@@ -71,7 +71,7 @@ class AttributeTableSeeder extends Seeder
           'sort' => 7,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 13,
-          'attribute_group_id' => 4
+          'attribute_group_id' => 1
         ],
         [
           'title' => 'Размер C',
@@ -79,7 +79,7 @@ class AttributeTableSeeder extends Seeder
           'sort' => 8,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 13,
-          'attribute_group_id' => 4
+          'attribute_group_id' => 1
         ],
         [
           'title' => 'Размер D',
@@ -87,7 +87,7 @@ class AttributeTableSeeder extends Seeder
           'sort' => 9,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 13,
-          'attribute_group_id' => 4
+          'attribute_group_id' => 1
         ],
         [
           'title' => 'Размер d N',
@@ -95,7 +95,7 @@ class AttributeTableSeeder extends Seeder
           'sort' => 10,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 13,
-          'attribute_group_id' => 4
+          'attribute_group_id' => 1
         ],
         [
           'title' => 'Размер E',
@@ -103,7 +103,7 @@ class AttributeTableSeeder extends Seeder
           'sort' => 11,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 13,
-          'attribute_group_id' => 4
+          'attribute_group_id' => 1
         ],
         [
           'title' => 'Размер F',
@@ -111,7 +111,7 @@ class AttributeTableSeeder extends Seeder
           'sort' => 12,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 13,
-          'attribute_group_id' => 4
+          'attribute_group_id' => 1
         ],
         [
           'title' => 'Размер G',
@@ -119,7 +119,7 @@ class AttributeTableSeeder extends Seeder
           'sort' => 13,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 13,
-          'attribute_group_id' => 4
+          'attribute_group_id' => 1
         ],
         [
           'title' => 'Размер L',
@@ -127,7 +127,7 @@ class AttributeTableSeeder extends Seeder
           'sort' => 14,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 13,
-          'attribute_group_id' => 4
+          'attribute_group_id' => 1
         ],
         [
           'title' => 'Размер M',
@@ -135,7 +135,7 @@ class AttributeTableSeeder extends Seeder
           'sort' => 15,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 13,
-          'attribute_group_id' => 4
+          'attribute_group_id' => 1
         ],
         [
           'title' => 'Статический момент',
@@ -143,8 +143,8 @@ class AttributeTableSeeder extends Seeder
           'sort' => 16,
           'attribute_type_id' => 3,
           'attribute_unit_id' => 14,
-          'attribute_group_id' => 4
-        ],
+          'attribute_group_id' => 2
+        ]
       ]);
     }
 }
