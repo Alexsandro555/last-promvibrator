@@ -15,8 +15,8 @@ class ProductDatabaseSeeder extends Seeder
   public function run()
   {
     Model::unguard();
-
-    $this->call(TnvedTableSeeder::class);
+    $this->call(AttributeTableSeeder::class);
+    /*$this->call(TnvedTableSeeder::class);
     $this->call(ProducerTableSeeder::class);
     $this->call(ProductCategoryTableSeeder::class);
     $this->call(TypeProductTableSeeder::class);
@@ -24,6 +24,6 @@ class ProductDatabaseSeeder extends Seeder
     $this->call(AttributeTypeTableSeeder::class);
     $this->call(AttributeUnitTableSeeder::class);
     $this->call(AttributeGroupTableSeeder::class);
-    $this->call(VibratorsTableSeeder::class);
+    $this->call(VibratorsTableSeeder::class);*/
   }
 }
