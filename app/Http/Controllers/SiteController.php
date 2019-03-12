@@ -15,93 +15,67 @@ class SiteController extends Controller
 {
   public function index()
   {
-    $typeProducts = TypeProduct::all();
-    $products = Product::with(['files','attributes','type_product'])->where('active',1)->where('special',1)->get();
+    $productCategories = ProductCategory::all();
+    $products = Product::with(['files','attributes','productCategory'])->where('active',1)->where('special',1)->get();
     $articles = Article::all();
-    return view('index',compact('products','typeProducts', 'articles'));
+    return view('index',compact('products','productCategories', 'articles'));
   }
 
   public function catalogTypes($slug, Request $request) {
     $articles = Article::all();
     $breadcrumbs = new Collection();
-    // Получение детальной карточки товара
-    $id = $request->id;
-    if($id) {
-      $slug = str_replace('.php','',$slug);
-      $product = Product::with(['files','attributes','lineProduct', 'typeProduct'])->whereHas('typeProduct',function($query) use ($slug) {
-        $query->where('url_key',$slug);
-      })->where('old_id',$id)->firstOrFail();
-      $productId = $product->id;
-      /*$groups = Group::with('attributeValues')->whereHas('attributeValues', function($query) use ($productId ) {
-        $query->where('product_id',$productId);
-      })->get();*/
 
+    if($request->has('id')) {
+      $slug = str_replace('.php','',$slug);
+      $product = Product::with(['files','attributes','productCategory','lineProduct', 'typeProduct'])->whereHas('productCategory',function($query) use ($slug) {
+        $query->where('url_key',$slug);
+      })->where('old_id',$request->id)->firstOrFail();
       $typeProduct = TypeProduct::with('lineProducts')->find($product->type_product_id);
       $lineProducts = LineProduct::where('type_product_id',$product->type_product_id)->get();
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
-      $breadcrumbs->push(new Breadcrumb($product->typeProduct->title, $product->typeProduct->url_key));
-      if($product->line_product)
-      {
-        $breadcrumbs->push(new Breadcrumb($product->lineProduct->title, $product->lineProduct->url_key));
-      }
+      $breadcrumbs->push(new Breadcrumb($product->productCategory->title, $product->productCategory->url_key));
+      if($product->type_product_id) $breadcrumbs->push(new Breadcrumb($product->typeProduct->title, $product->typeProduct->url_key));
+      if($product->line_product_id) $breadcrumbs->push(new Breadcrumb($product->lineProduct->title, $product->lineProduct->url_key));
       $breadcrumbs->push(new Breadcrumb($product->title, $product->url_key));
       return view('detail', compact('product','lineProducts', 'typeProduct' ,'breadcrumbs', 'articles'));
     }
-    // конец получения детальной карточки товара
 
-    // получение продуктов заданной категории типа продукта
-    $products = Product::with(['files','attributes','typeProduct'])->whereHas('typeProduct',function($query) use ($slug) {
+    $productCategory = ProductCategory::where('url_key', $slug)->first();
+    if($productCategory) {
+      $products = Product::with(['files','attributes','productCategory'])->whereHas('productCategory',function($query) use ($slug) {
+        $query->where('url_key',$slug);
+      })->where('active',1)->paginate(10);
+      $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
+      $breadcrumbs->push(new Breadcrumb($productCategory->title, $slug));
+      return view('catalog', compact('products','productCategory','breadcrumbs', 'articles'));
+    }
+
+    $productCategory = ProductCategory::with(['typeProducts'])->whereHas('typeProducts', function($query) use ($slug) {
       $query->where('url_key',$slug);
-    })->where('active',1)->paginate(10);
+    })->first();
+    if($productCategory) {
+      $products = Product::with(['files','attributes','typeProduct'])->whereHas('typeProduct', function($query) use ($slug) {
+        $query->where('url_key',$slug);
+      })->where('active',1)->paginate(10);
+      $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
+      $breadcrumbs->push(new Breadcrumb($productCategory->title, $productCategory->url_key));
+      $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->title, $slug));
+      return view('catalog', compact('products','productCategory','breadcrumbs', 'articles'));
+    }
 
-    // получение продуктов заданной категории для линейки продукции если тип продукции с таким slug не был найден
-    if($products->count() === 0) {
+    $productCategory = ProductCategory::with(['typeProducts.lineProducts'])->whereHas('typeProducts.lineProducts', function($query) use ($slug) {
+      $query->where('url_key',$slug);
+    })->first();
+    if($productCategory) {
       $products = Product::with(['files','attributes','lineProduct'])->whereHas('lineProduct', function($query) use ($slug) {
         $query->where('url_key',$slug);
       })->where('active',1)->paginate(10);
-      // Получение продуктов с заданным атрибутов - еще потребуется добавить с заданной линейкой продукции
-      if($products->count() === 0) {
-        $products = Product::with('attributes')->whereHas('attributes', function($query) use ($slug) {
-          $query->where('url_key',$slug);
-        })->where('active',1)->get();
-        if($products->count() === 0) {
-          abort(404);
-        }
-        // линейки имеющие заданный атрибут
-        $lineProduct = LineProduct::with(['attributes'])->whereHas('attributes', function($query) use ($slug) {
-          $query->where('alias',$slug);
-        })->firstOrFail();
-        // если линеек с заданным атрибутом нет - то проверяем тип продукции
-        if($lineProduct->count() === 0) {
-          $typeProduct = TypeProduct::with(['attributes','lineProducts'])->whereHas('attributes', function($query) use ($slug) {
-            $query->where('alias',$slug);
-          })->FirsOrFail();
-        }
-        else {
-          $typeProduct = TypeProduct::with(['attributes','lineProducts'])->find($lineProduct->type_product_id);
-        }
-        $attribute = Attribute::where('alias',$slug)->FirsOrFail();
-        $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
-        $breadcrumbs->push(new Breadcrumb($typeProduct->title, $typeProduct->url_key));
-        $breadcrumbs->push(new Breadcrumb($attribute->title, $attribute->alias));
-        return view('catalog', compact('products','typeProduct','breadcrumbs', 'articles'));
-      }
-      $lineProduct = LineProduct::where('url_key',$slug)->first();
-      $idTypeProduct = $lineProduct->type_product_id;
-      $typeProduct =  TypeProduct::with('lineProducts')->whereHas('lineProducts',function($query) use($slug) {
-        $query->where('url_key',$slug);
-      })->first();
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
-      $breadcrumbs->push(new Breadcrumb($typeProduct->title, $typeProduct->url_key));
-      $breadcrumbs->push(new Breadcrumb($lineProduct->title, $slug));
+      $breadcrumbs->push(new Breadcrumb($productCategory->title, $productCategory->url_key));
+      $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->title, $productCategory->typeProducts[0]->url_key));
+      $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->lineProducts[0]->title, $productCategory->typeProducts[0]->lineProducts[0]->url_key));
+      return view('catalog', compact('products', 'productCategory','breadcrumbs', 'articles'));
     }
-    else {
-      // получение информации для заданной категории типа продукции
-      $typeProduct = TypeProduct::with('lineProducts')->where('url_key',$slug)->first();
-      $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
-      $breadcrumbs->push(new Breadcrumb($typeProduct->title, $slug));
-    }
-    return view('catalog', compact('products','typeProduct','breadcrumbs', 'articles'));
   }
 
   public function lineProduct($slugTypeProduct, $slugLineProduct) {

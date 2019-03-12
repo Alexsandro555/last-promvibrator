@@ -1,18 +1,16 @@
 @extends('layouts.master')
 
-@section('title', 'ПРОМВИБРАТОР.РУ.'.$typeProduct->title.' cписок.')
+@section('title', 'ПРОМВИБРАТОР.РУ.'.$productCategory->title.' cписок.')
 
 @section('sidebar')
-  @foreach($typeProduct->lineProducts as $lineProduct)
+  @foreach($productCategory->typeProducts as $typeProduct)
     <div class="content-left-menu">
-      <a href="/{{$lineProduct->url_key}}" class="partition">{{$lineProduct->title}}</a>
-      @foreach($lineProduct->attributes as $attribute)
-        @if($attribute->filterable)
-          <a href="{{$attribute->url_key}}">
-            {{$attribute->title}}
+      <a href="/{{$typeProduct->url_key}}" class="partition">{{$typeProduct->title}}</a>
+      @foreach($typeProduct->lineProducts as $lineProduct)
+          <a href="{{$lineProduct->url_key}}">
+            {{$lineProduct->title}}
             <img src="{{asset('css/images/hover-menu.png')}}" alt="arrow"/>
           </a>
-        @endif
       @endforeach
     </div>
   @endforeach
@@ -42,7 +40,7 @@
               <div class="tab-li-stiker-sale"></div>
             @endif
             <div class="tab-li-title">
-              <a href="/{{$typeProduct->url_key}}.php?id={{$product->old_id}}">{{$product->title}}</a>
+              <a href="/{{$productCategory->url_key}}.php?id={{$product->old_id}}">{{$product->title}}</a>
             </div>
             <div class="tab-li-img">
               <a href="/{{$product->url_key}}">

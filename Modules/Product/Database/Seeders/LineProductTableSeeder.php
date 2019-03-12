@@ -18,118 +18,118 @@ class LineProductTableSeeder extends Seeder
     Model::unguard();
     DB::table('line_products')->insert([
       [
-        'title' => 'Классическая серия',
+        'title' => '2 полюсной/3000 об/мин.',
         'type_product_id' => 1,
         'sort' => 1,
-        'url_key' => 'classic'
+        'url_key' => '2polus-3000'
       ],
       [
-        'title' => 'Увеличенный ресурс',
+        'title' => '4 полюсной/1500 об/мин.',
         'type_product_id' => 1,
         'sort' => 2,
-        'url_key' => 'increased-life'
+        'url_key' => '4polus-1500'
       ],
       [
-        'title' => 'Взрывозащищенная серия',
+        'title' => '6 полюсной/1000 об/мин.',
         'type_product_id' => 1,
         'sort' => 3,
-        'url_key' => 'explosion-proof-series'
+        'url_key' => '6polus-1000'
       ],
       [
-        'title' => 'Со съемными крышками',
+        'title' => '8 полюсной/750 об/мин.',
         'type_product_id' => 1,
         'sort' => 4,
-        'url_key' => 'removable-covers'
+        'url_key' => '8polus-750'
       ],
       [
-        'title' => 'K - поршневой тип',
-        'type_product_id' => 2,
+        'title' => '2 полюсной/однофазный',
+        'type_product_id' => 1,
         'sort' => 5,
-        'url_key' => 'K'
+        'url_key' => '2polus-1faza'
       ],
       [
-        'title' => 'S - шаровый тип',
-        'type_product_id' => 2,
+        'title' => 'микровибраторы',
+        'type_product_id' => 1,
         'sort' => 6,
-        'url_key' => 'S'
+        'url_key' => 'micro'
       ],
       [
-        'title' => 'OR - роликовый тип',
-        'type_product_id' => 2,
+        'title' => 'на постоянном токе',
+        'type_product_id' => 1,
         'sort' => 7,
-        'url_key' => 'OR'
+        'url_key' => 'direct-current'
       ],
       [
-        'title' => 'OT - турбинный тип',
+        'title' => 'высокоамплитудные/для помола',
+        'type_product_id' => 1,
+        'sort' => 7,
+        'url_key' => '10polus-600'
+      ],
+      [
+        'title' => '2 полюсной/3000 об/мин.',
         'type_product_id' => 2,
-        'sort' => 8,
-        'url_key' => 'OT'
+        'sort' => 1,
+        'url_key' => '2polus-3000E'
       ],
       [
-        'title' => 'PS - пневмомолоток',
+        'title' => '4 полюсной/1500 об/мин.',
         'type_product_id' => 2,
-        'sort' => 9,
-        'url_key' => 'PS'
+        'sort' => 2,
+        'url_key' => '4polus-1500E'
       ],
       [
-        'title' => 'PJ - пневмомолот',
+        'title' => '6 полюсной/1000 об/мин.',
         'type_product_id' => 2,
-        'sort' => 10,
-        'url_key' => 'PJ'
+        'sort' => 3,
+        'url_key' => '6polus-1000E'
       ],
       [
-        'title' => 'F - Поршневые вибраторы',
+        'title' => '8 полюсной/750 об/мин.',
         'type_product_id' => 2,
-        'sort' => 11,
-        'url_key' => 'F'
+        'sort' => 4,
+        'url_key' => '8polus-750E'
       ],
       [
-        'title' => 'P - Постоянного удара',
-        'type_product_id' => 2,
-        'sort' => 12,
-        'url_key' => 'P'
-      ],
-      [
-        'title' => 'PG - пневмопушка',
+        'title' => '2 полюсной/3000 об/мин.',
         'type_product_id' => 3,
-        'sort' => 13,
-        'url_key' => 'PG'
+        'sort' => 1,
+        'url_key' => '2polus-3000D'
       ],
       [
-        'title' => 'VBS - виброаэраторы',
+        'title' => '4 полюсной/1500 об/мин.',
         'type_product_id' => 3,
-        'sort' => 14,
-        'url_key' => 'VBS'
+        'sort' => 2,
+        'url_key' => '4polus-1500D'
       ],
       [
-        'title' => 'U - Форсунки аэрации',
+        'title' => '6 полюсной/1000 об/мин.',
         'type_product_id' => 3,
-        'sort' => 15,
-        'url_key' => 'U'
+        'sort' => 3,
+        'url_key' => '6polus-1000D'
       ],
       [
-        'title' => 'I - пластины аэрации',
+        'title' => '8 полюсной/750 об/мин.',
         'type_product_id' => 3,
-        'sort' => 16,
-        'url_key' => 'I'
+        'sort' => 4,
+        'url_key' => '8polus-750D'
       ],
       [
-        'title' => 'Механические VD',
+        'title' => '4 полюсной/1500 об/мин.',
         'type_product_id' => 4,
-        'sort' => 17,
-        'url_key' => 'VD'
+        'sort' => 2,
+        'url_key' => '4polus-1500S'
       ],
       [
-        'title' => 'Механические UNI',
+        'title' => '6 полюсной/1000 об/мин.',
         'type_product_id' => 4,
-        'sort' => 18,
-        'url_key' => 'UNI'
+        'sort' => 3,
+        'url_key' => '6polus-1000S'
       ],
       [
-        'title' => 'Гидравлический вибратор MVO',
-        'type_product_id' => 5,
-        'sort' => 19,
-        'url_key' => 'GVMVO'
+        'title' => '8 полюсной/750 об/мин.',
+        'type_product_id' => 4,
+        'sort' => 4,
+        'url_key' => '8polus-750S'
       ],
     ]);
   }

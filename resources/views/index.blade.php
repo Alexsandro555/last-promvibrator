@@ -3,8 +3,8 @@
 @section('title', "ПРОМВИБРАТОР.РУ. Площадочные вибраторы, глубинные вибраторы и пневматические вибраторы")
 
 @section('sidebar')
-  @foreach($typeProducts as $typeProduct)
-    <div class="content-left-menu"><a class="partition" href="/{{$typeProduct->url_key}}/">{{$typeProduct->title}}</a></div>
+  @foreach($productCategories as $productCategory)
+    <div class="content-left-menu"><a class="partition" href="/{{$productCategory->url_key}}/">{{$productCategory->title}}</a></div>
   @endforeach
   <div class="content-left-menu"></div>
   @include('sidebar',['articles' => $articles])
@@ -20,7 +20,7 @@
             <div class="tab-li-stiker-sale"></div>
           @endif
           <div class="tab-li-title">
-            <a href="/{{$product->type_product->url_key}}.php?id={{$product->old_id}}">{{$product->title}}</a>
+            <a href="/{{$product->productCategory->url_key}}.php?id={{$product->old_id}}">{{$product->title}}</a>
           </div>
           <div class="tab-li-img">
             <a href="/{{$product->url_key}}">

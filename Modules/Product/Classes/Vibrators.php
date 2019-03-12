@@ -3,6 +3,7 @@
 namespace Modules\Product\Classes;
 
 use Modules\Product\Entities\LineProduct;
+use Modules\Product\Entities\TypeProduct;
 use Modules\Product\Entities\Product;
 
 class Vibrators
@@ -10,10 +11,10 @@ class Vibrators
   public function make()
   {
     $pneumaticVibratorTypes = PneumaticVibratorTypes::All();
-    $lineProduct = new LineProduct;
+    $typeProduct = new TypeProduct;
     $arrPneumaticVibratorTypes = [];
     foreach ($pneumaticVibratorTypes as $pneumaticVibratorType) {
-      $result = $lineProduct->where('title',$pneumaticVibratorType->name)->first();
+      $result = $typeProduct->where('title',$pneumaticVibratorType->name)->first();
       $item["old_id"] = $pneumaticVibratorType->id;
       $item["name"] = $pneumaticVibratorType->name;
       $item['id'] = $result->id;
@@ -30,9 +31,8 @@ class Vibrators
         $product->url_key = \Slug::make($pneumaticVibrator->name);
         $product->price = $pneumaticVibrator->price;
         $product->active = 1;
-        $product->product_category_id = 1;
-        $product->type_product_id = $pneumaticVibrator->id>50?3:2;
-        $product->line_product_id = $arrPneumaticVibratorType["id"];
+        $product->product_category_id = $pneumaticVibrator->id>50?3:2;
+        $product->type_product_id = $arrPneumaticVibratorType["id"];
         $product->old_id = $pneumaticVibrator->id;
         $product->qty = $pneumaticVibrator->onstock;
         $product->save();
@@ -43,15 +43,17 @@ class Vibrators
     $vibratorParentTypes = VibratorParentType::All();
     $arrVibratorsTypes = [];
     foreach ($vibratorParentTypes as $vibratorParentType) {
-      $result = $lineProduct->where('title',$vibratorParentType->name)->first();
+      $result = $typeProduct->where('title',$vibratorParentType->name)->first();
       $vibratorTypes = VibratorType::where('typeid',$vibratorParentType->id)->get();
       foreach ($vibratorTypes as $vibratorType) {
         $item["old_id"] = $vibratorType->id;
         $item["name"] = $vibratorParentType->name;
+        $item["parent_id"] = $result->id;
         $item['id'] = $result->id;
         $arrVibratorsTypes[] = $item;
       }
     }
+
 
 
     // Площадочные вибраторы
@@ -65,7 +67,7 @@ class Vibrators
         $product->price = $Vibrator->price;
         $product->active = 1;
         $product->product_category_id = 1;
-        $product->type_product_id = 1;
+        $product->type_product_id = $arrVibratorsType["parent_id"];
         $product->line_product_id = $arrVibratorsType["id"];
         $product->old_id = $Vibrator->id;
         $product->qty = $Vibrator->onstock;
@@ -76,7 +78,7 @@ class Vibrators
     $concreteVibratorTypes = ConcreteVibratorType::All();
     $arrConcreteVibratorTypes = [];
     foreach ($concreteVibratorTypes as $concreteVibratorType) {
-      $result = $lineProduct->where('title',$concreteVibratorType->name)->first();
+      $result = $typeProduct->where('title',$concreteVibratorType->name)->first();
       $item["old_id"] = $concreteVibratorType->id;
       $item["name"] = $concreteVibratorType->name;
       $item['id'] = $result->id;
@@ -93,9 +95,8 @@ class Vibrators
         $product->url_key = \Slug::make($concreteVibrator->name);
         $product->price = $concreteVibrator->price;
         $product->active = $concreteVibrator->disabled ? 0 : 1;
-        $product->product_category_id = 1;
-        $product->type_product_id = 4;
-        $product->line_product_id = $arrConcreteVibratorType["id"];
+        $product->product_category_id = 4;
+        $product->type_product_id = $arrConcreteVibratorType["id"];
         $product->old_id = $concreteVibrator->id;
 
         $product->qty = $concreteVibrator->onstock;
