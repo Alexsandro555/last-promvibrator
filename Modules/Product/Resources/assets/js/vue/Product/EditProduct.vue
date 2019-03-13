@@ -13,7 +13,7 @@
             <v-card>
               <v-card-title>
                 <h1>Редактирование продукта</h1>
-                &nbsp;&nbsp;&nbsp;<a :href="getProductCategory.url_key+'.php?id='+form.old_id" target="_blank" style="text-decoration: none">к товару</a>
+                &nbsp;&nbsp;&nbsp;<a v-if="getProductCategory" :href="getProductCategory.url_key+'.php?id='+form.old_id" target="_blank" style="text-decoration: none">к товару</a>
               </v-card-title>
               <v-card-text>
                 <v-container>

@@ -19,6 +19,7 @@
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.id }}</td>
                 <td class="text-xs-left">{{ props.item.title }}</td>
+                <td>{{props.item.sort}}</td>
                 <td class="justify-center layout px-0">
                   <v-btn @click="goToPage(props.item)" icon class="mx-0">
                     <v-icon>find_in_page</v-icon>
@@ -71,12 +72,17 @@
           {
             text: '#',
             align: 'left',
-            sortable: true,
+            sortable: false,
             value: 'id'
           },
           {
             text: 'Наименование',
             value: 'title',
+            sortable: false
+          },
+          {
+            text: 'Сорт',
+            value: 'sort',
             sortable: true
           },
           {

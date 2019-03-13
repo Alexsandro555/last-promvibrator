@@ -16,7 +16,7 @@ class AddFieldOldIdProductTable extends Migration
   public function up()
   {
     Schema::table($this->tableName, function (Blueprint $table) {
-      $table->unsignedInteger('old_id')->comment('Старый идентефикатор');
+      $table->unsignedInteger('old_id')->nullable()->comment('Старый идентефикатор');
     });
   }
 

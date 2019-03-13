@@ -4,11 +4,12 @@ namespace Modules\Product\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Modules\Initializer\Traits\OldIdTrait;
 use Modules\Initializer\Traits\SortTrait;
 
 class Product extends Model
 {
-  use SoftDeletes, \Staudenmeir\EloquentHasManyDeep\HasRelationships, SortTrait;
+  use SoftDeletes, \Staudenmeir\EloquentHasManyDeep\HasRelationships, SortTrait, OldIdTrait;
 
   protected $dates = ['deleted_at'];
   
