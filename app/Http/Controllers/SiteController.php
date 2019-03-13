@@ -11,6 +11,7 @@ use Modules\Article\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use App\Breadcrumb;
+use Modules\Files\Entities\File;
 
 class SiteController extends Controller
 {
@@ -88,5 +89,10 @@ class SiteController extends Controller
   public function detail($slug) {
     $product = Product::with('files')->where('url_key',$slug)->first();
     return view('detail', compact('product'));
+  }
+
+  public function images($id) {
+    $imageProducts = File::with('typeFile')->where('fileable_id',$id)->where('fileable_type',Product::class)->get();
+    return $imageProducts;
   }
 }

@@ -31,5 +31,7 @@ Route::get('/test', function() {
   dd($result);
 });
 
+Route::get('product-images/{id}', ['uses' => 'SiteController@images', 'as' => 'product-images']);
+
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{slug}', ['uses' => 'SiteController@catalogTypes', 'as'=> 'catalog-products']);

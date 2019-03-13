@@ -28,6 +28,9 @@ import Callback from '@callback/vue/Callback.vue'
 import callback from '@callback/vuex/callbacks/state'
 Vue.component('callback', Callback)
 
+import DetailImage from '@/vue/DetailImage'
+Vue.component('detail-image', DetailImage)
+
 import cart from '@cart/vuex/store'
 const store = new Vuex.Store({
   modules: {

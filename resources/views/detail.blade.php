@@ -24,7 +24,7 @@
       @if($product->special)
         <div class="tab-li-stiker-hit"></div>
       @endif
-      <leader-detail-image :url="'/product-images/{{$product->id}}'"></leader-detail-image>
+      <detail-image :url="'/product-images/{{$product->id}}'"></detail-image>
       <div class="content-right-product-right">
         <div class="product-right-stock"><b>На складе:</b> {{$product->qty>0?"есть":"нет"}}</div>
         <div class="product-right-garant"><b>Гарантия:</b> 12 месяцев.</div>
