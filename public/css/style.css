@@ -1656,3 +1656,31 @@ input:hover.callback-submit {
   background-color: #ddd;
 }
 
+
+.tabs__characteristics {
+  display: inline-block;
+  margin-left: 30px;
+}
+
+@supports (display: grid) {  /* если браузер поддерживает Гриды */
+  @media (min-width: 14em) {  /* если окно браузера больше 14em */
+    dl.tabs__characteristics-attributes {
+      display: grid;
+      grid-template-columns: auto 1fr;  /* auto определяет ширину первой колонки, которая равна самому широкому элементу <dt> (auto можно заменить на fit-content(10em), если необходимо её ограничить) */
+    }
+    .tabs__characteristics-attributes dt {
+      min-width: 0;  /* более привычное поведение при переполнении */
+    }
+    .tabs__characteristics-attributes dd {
+      margin: 0 0 0 1em;
+      font-weight: bold;
+    }
+  }
+}
+
+
+#tabs-1 {
+  font-size: 0.9em;
+  padding-right: 60px;
+}
+

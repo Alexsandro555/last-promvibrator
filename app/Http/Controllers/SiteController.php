@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Modules\Product\Entities\AttributeGroup;
 use Modules\Product\Entities\Product;
 use Modules\Product\Entities\ProductCategory;
 use Modules\Product\Entities\TypeProduct;
@@ -30,6 +31,7 @@ class SiteController extends Controller
       $product = Product::with(['files','attributes','productCategory','lineProduct', 'typeProduct'])->whereHas('productCategory',function($query) use ($slug) {
         $query->where('url_key',$slug);
       })->where('old_id',$request->id)->firstOrFail();
+      $groups = AttributeGroup::all();
       $typeProduct = TypeProduct::with('lineProducts')->find($product->type_product_id);
       $lineProducts = LineProduct::where('type_product_id',$product->type_product_id)->get();
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
@@ -37,7 +39,7 @@ class SiteController extends Controller
       if($product->type_product_id) $breadcrumbs->push(new Breadcrumb($product->typeProduct->title, $product->typeProduct->url_key));
       if($product->line_product_id) $breadcrumbs->push(new Breadcrumb($product->lineProduct->title, $product->lineProduct->url_key));
       $breadcrumbs->push(new Breadcrumb($product->title, $product->url_key));
-      return view('detail', compact('product','lineProducts', 'typeProduct' ,'breadcrumbs', 'articles'));
+      return view('detail', compact('product','lineProducts', 'typeProduct', 'groups','breadcrumbs', 'articles'));
     }
 
     $productCategory = ProductCategory::where('url_key', $slug)->first();

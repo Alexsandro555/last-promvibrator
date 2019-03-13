@@ -50,6 +50,58 @@
       </div>
     </div>
     <h2 class="h2-product">Характиристики и описание</h2>
+    <div class="tabs">
+      <ul>
+        @foreach($groups as $group)
+          <li><a href="#tabs-group-{{$group->id}}">{{$group->title}}</a></li>
+        @endforeach
+        <li><a href="#tabs-1">Описание</a></li>
+      </ul>
+      @foreach($groups as $group)
+        <div id="tabs-group-{{$group->id}}">
+          @foreach($product->attributes->filter(function($attribute, $key) use (&$group){
+              return $attribute->attribute_group_id == $group->id;
+          })->sortBy('sort')->chunk(10) as $chunkAttributes)
+            <div class="tabs__characteristics">
+              <dl class="tabs__characteristics-attributes">
+                @foreach($chunkAttributes as $attribute)
+                  @if($attribute->attribute_type_id == 3)
+                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->integer_value}}</dd>
+                  @endif
+                  @if($attribute->attribute_type_id == 4)
+                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->double_value}}</dd>
+                  @endif
+                  @if($attribute->attribute_type_id == 5)
+                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->date_value}}</dd>
+                  @endif
+                  @if($attribute->attribute_type_id == 7)
+                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->decimal_value}}</dd>
+                  @endif
+                @endforeach
+              </dl>
+            </div>
+          @endforeach
+        </div>
+      @endforeach
+      <div id="tabs-1">
+        {{strip_tags($product->description)}}
+      </div>
+    </div>
   </div>
   <a href=""><img src="{{asset('css/images/banner-sale.png')}}" alt="img" class="img-banner"></a>
 @stop
+
+@section('view.style')
+  <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
+@endsection
+
+@section('view.scripts')
+  <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+  <script>
+    $('.tabs').tabs(
+      {
+        active: 0
+      }
+    );
+  </script>
+@endsection

@@ -264,14 +264,15 @@
       },
       onRemoveProductCategoryAttributes() {
         if (this.$refs.formProductCategoryAttr.validate()) {
-          this.isSending = true
           let data = {
             'attr': this.formProductCategoryAttributes,
             'product_category_id': this.form.product_category_id
           }
+          console.log(data)
+          /*this.isSending = true
           this.removeBindAttributes(data).then(response => {
             this.isSending = false
-          })
+          })*/
         }
       },
       onRemoveTypeProductAttributes() {
