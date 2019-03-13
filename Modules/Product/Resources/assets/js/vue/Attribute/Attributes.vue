@@ -9,7 +9,6 @@
             <br>
             <div v-if="attributes.length>0">
               <v-form ref="form">
-                {{attributes.map(item => item.title)}}
                 <template v-for="(attribute, index) in attributes">
                   <v-container grid-list-md>
                     <v-layout col wrap>
