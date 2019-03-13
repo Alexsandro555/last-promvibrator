@@ -29,7 +29,7 @@ class SiteController extends Controller
 
     if($request->has('id')) {
       $slug = str_replace('.php','',$slug);
-      $product = Product::with(['files','attributes','productCategory','lineProduct', 'typeProduct'])->whereHas('productCategory',function($query) use ($slug) {
+      $product = Product::with(['files','attributes.attribute_unit','productCategory','lineProduct', 'typeProduct'])->whereHas('productCategory',function($query) use ($slug) {
         $query->where('url_key',$slug);
       })->where('old_id',$request->id)->firstOrFail();
       $groups = AttributeGroup::all();

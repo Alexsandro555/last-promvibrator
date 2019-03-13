@@ -66,16 +66,16 @@
               <dl class="tabs__characteristics-attributes">
                 @foreach($chunkAttributes as $attribute)
                   @if($attribute->attribute_type_id == 3)
-                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->integer_value}}</dd>
+                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->integer_value}} {{$attribute->attribute_unit->title}}</dd>
                   @endif
                   @if($attribute->attribute_type_id == 4)
-                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->double_value}}</dd>
+                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->double_value}} {{$attribute->attribute_unit->title}}</dd>
                   @endif
                   @if($attribute->attribute_type_id == 5)
-                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->date_value}}</dd>
+                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->date_value}} {{$attribute->attribute_unit->title}}</dd>
                   @endif
                   @if($attribute->attribute_type_id == 7)
-                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->decimal_value}}</dd>
+                    <dt>{{$attribute->title}}</dt><dd class="tabs__characteristics--value">{{$attribute->pivot->decimal_value}} {{$attribute->attribute_unit->title}}</dd>
                   @endif
                 @endforeach
               </dl>

@@ -86,7 +86,7 @@
                   </v-container>
                 </template>
                 <v-flex xs12 text-xs-left>
-                  <v-btn :disabled="!attributes.length>0" large color="primary" @click.prevent="onSave()">Сохранить</v-btn>
+                  <v-btn :disabled="!attributes.length>0" large color="primary" @click.prevent="onSave()">Сохранить атрибуты</v-btn>
                 </v-flex>
               </v-form>
             </div>

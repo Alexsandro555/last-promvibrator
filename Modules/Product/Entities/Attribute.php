@@ -26,6 +26,9 @@ class Attribute extends Model
     'active' => [
       'enabled' => true
     ],
+    'sort' => [
+      'enabled' => true
+    ],
     'attribute_unit' => [
       'enabled' => true
     ],

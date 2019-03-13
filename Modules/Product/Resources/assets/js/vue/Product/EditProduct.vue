@@ -13,6 +13,7 @@
             <v-card>
               <v-card-title>
                 <h1>Редактирование продукта</h1>
+                &nbsp;&nbsp;&nbsp;<a :href="getProductCategory.url_key+'.php?id='+form.old_id" target="_blank" style="text-decoration: none">к товару</a>
               </v-card-title>
               <v-card-text>
                 <v-container>
@@ -122,7 +123,7 @@
                         <file-box url="/files/upload" :fileable-id="Number(form.id)" :type-files="typeFiles" :model="getModel"></file-box>
                         <v-flex text-xs-left>
                           <v-btn text-xs-left large :class="{primary: valid, 'red lighten-3': !valid}"
-                                 :disabled="isSending" @click.prevent="onSubmit">Сохранить
+                                 :disabled="isSending" @click.prevent="onSubmit">Сохранить продукт
                           </v-btn>
                         </v-flex>
                       </v-form>
@@ -214,9 +215,9 @@
         return this.getAttributablesProductCategory.concat(this.getAttributablesTypeProduct).concat(this.getAttributablesLineProduct)
       },
       getAttributes() {
-        return this.getAttributebles.map(item => {
+        return _.sortBy(this.getAttributebles.map(item => {
           return Object.assign(item, this.transformByKey(item, 'attribute_id'))
-        })
+        }),[function(o) {return o.sort}])
       },
       ...mapState('products', ['items', 'typeFiles']),
       ...mapGetters('products', {getItem: GLOBAL.GET_ITEM, getModel: 'getModel'}),

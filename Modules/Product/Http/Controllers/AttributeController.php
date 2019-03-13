@@ -30,7 +30,7 @@ class AttributeController extends Controller
    * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|Attribute[]
    */
   public function index() {
-    return $this->model::with(['attributeListValue'])->get();
+    return $this->model::with(['attributeListValue'])->orderBy('sort','asc')->get();
   }
 
   public function attributes($id) {
