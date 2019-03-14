@@ -51,7 +51,6 @@ class AttributablesController extends Controller
     }
     if($request->product_category_id) {
       $productCategory = ProductCategory::findOrFail($request->product_category_id);
-      $temp = array_values($request->attr);
       $productCategory->attributes()->detach($request->attr);
     }
     return ['attributable' => Attributable::all(), 'attribute_values' => AttributeValue::all()];

@@ -15,6 +15,11 @@ window.Vue = Vue
 //===========Vuex==========================================
 import Vuex from 'vuex'
 Vue.use(Vuex)
+//==========Vee-validate===================================
+import ru from 'vee-validate/dist/locale/ru';
+import VeeValidate, { Validator } from 'vee-validate'
+Vue.use(VeeValidate)
+Validator.localize('ru', ru)
 //==========Vuetify========================================
 import Vuetify from 'vuetify'
 // Импорт CSS-файлов, которые могут потребоваться

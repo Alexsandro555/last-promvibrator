@@ -14,46 +14,58 @@
                     <v-layout col wrap>
                       <v-text-field
                         v-if="attribute.attribute_type_id==2"
-                        :name="attribute.alias"
+                        :name="attribute.url_key"
                         :label="attribute.title"
+                        v-validate="'max:255'"
+                        :error-messages="errors.collect(attribute.title)"
+                        :data-vv-name="attribute.title"
                         :value="form[attribute.id]?form[attribute.id].value:null"
                         @input="updateAttribute($event, attribute.id)">
                       </v-text-field>
                       <v-text-field
                         v-else-if="attribute.attribute_type_id==7"
-                        :name="attribute.alias"
+                        :name="attribute.url_key"
                         :label="attribute.title"
+                        v-validate="'decimal:2'"
+                        :error-messages="errors.collect(attribute.title)"
+                        :data-vv-name="attribute.title"
                         :value="form[attribute.id]?form[attribute.id].value:null"
                         @input="updateAttribute($event, attribute.id)"
                         prefix="₽">
                       </v-text-field>
                       <v-text-field
                         v-else-if="attribute.attribute_type_id==3"
-                        :name="attribute.alias"
+                        :name="attribute.url_key"
+                        v-validate="'integer'"
+                        :error-messages="errors.collect(attribute.title)"
+                        :data-vv-name="attribute.title"
                         :label="attribute.title"
                         @input="updateAttribute($event, attribute.id)"
                         :value="form[attribute.id]?form[attribute.id].value:null">
                       </v-text-field>
                       <v-text-field
                         v-else-if="attribute.attribute_type_id==4"
-                        :name="attribute.alias"
+                        :name="attribute.url_key"
                         :label="attribute.title"
+                        v-validate="'decimal'"
+                        :error-messages="errors.collect(attribute.title)"
+                        :data-vv-name="attribute.title"
                         @input="updateAttribute($event, attribute.id)"
                         :value="form[attribute.id]?form[attribute.id].value:null">
                       </v-text-field>
                       <v-checkbox
                         v-else-if="attribute.attribute_type_id==1"
-                        :name="attribute.alias"
+                        :name="attribute.url_key"
                         :label="attribute.title"
                         @change="updateAttribute($event, attribute.id)"
                         :value="form[attribute.id]?form[attribute.id].value:null">
                       </v-checkbox>
                       <v-select
                         v-else-if="attribute.attribute_type_id==8"
-                        :name="attribute.alias"
+                        :name="attribute.url_key"
                         :items="attribute.attribute_list_value"
                         :label="attribute.title"
-                        :id="attribute.alias"
+                        :id="attribute.url_key"
                         no-data-text="Нет данных"
                         @input="updateAttribute($event, attribute.id)"
                         :value="form[attribute.id]?form[attribute.id].value:null"

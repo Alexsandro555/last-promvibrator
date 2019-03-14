@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-layout wrap row>
+    <v-layout align-center justify-center full-height wrap row>
       <v-flex>
         <v-progress-circular v-if="loader" indeterminate :size="100" color="primary"></v-progress-circular>
         <v-card v-else>
@@ -188,12 +188,16 @@
     },
     beforeRouteEnter(to, from, next) {
       next(vm => {
-        vm.initialization()
-        vm.loadProductCategories()
-        vm.loadTypeProducts()
-        vm.loadLineProducts()
-        vm.loadAttributes()
-        vm.load()
+        vm.loader = true
+        let init = vm.initialization()
+        let productCategories = vm.loadProductCategories()
+        let typeProducts = vm.loadTypeProducts()
+        let lineProducts = vm.loadLineProducts()
+        let attributes = vm.loadAttributes()
+        let load = vm.load()
+        Promise.all([init,productCategories,typeProducts,lineProducts,attributes,load]).then(result => {
+          vm.loader = false
+        })
       })
     },
     computed: {
@@ -236,13 +240,13 @@
     },
     watch: {
       getProductCategoryAttributes(val) {
-        this.formProductCategoryAttributes = [...val]
+        this.formProductCategoryAttributes = val.map(item => item.attribute_id)
       },
       getTypeProductAttributes(val) {
-        this.formTypeProductAttributes = [...val]
+        this.formTypeProductAttributes = val.map(item => item.attribute_id)
       },
       getLineProductAttributes(val) {
-        this.formLineProductAttributes = [...val]
+        this.formLineProductAttributes = val.map(item => item.attribute_id)
       }
     },
     methods: {
@@ -268,11 +272,10 @@
             'attr': this.formProductCategoryAttributes,
             'product_category_id': this.form.product_category_id
           }
-          console.log(data)
-          /*this.isSending = true
+          this.isSending = true
           this.removeBindAttributes(data).then(response => {
             this.isSending = false
-          })*/
+          })
         }
       },
       onRemoveTypeProductAttributes() {

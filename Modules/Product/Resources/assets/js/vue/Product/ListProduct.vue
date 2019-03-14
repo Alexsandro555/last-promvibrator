@@ -83,11 +83,14 @@
           {
             text: 'Сорт',
             value: 'sort',
-            sortable: true
+            sortable: true,
+            align: 'right',
+            width: '10'
           },
           {
             text: 'Действия',
             value: 'title',
+            align: 'center',
             sortable: false
           }
         ],
