@@ -820,7 +820,7 @@ a:hover.content-left-articles-link-a {
 }
 
 .tab-li-button {
-  margin-top: 16px;
+  //margin-top: 16px;
   position: relative;
 }
 
@@ -931,7 +931,7 @@ input:hover.cart-submit {
 .ul-info-home li {
   color: #6c6c6c;
   line-height: 22px;
-}
+}*
 
 .footer {
   display: table;

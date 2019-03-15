@@ -27,8 +27,9 @@
         <cart-widget>
           <template slot-scope="slotProps">
             <span>
-              <a @click.prev="showCartModal" href="#">
-                @{{slotProps.count}} товар(ов), @{{slotProps.total}} руб.
+              <a class="header-top-b-c" @click.prev="showCartModal" href="#">
+                  <span v-if="slotProps.count>0">@{{slotProps.count}} товар(ов), @{{slotProps.total}} руб.</span>
+                  <span v-else>Корзина пуста</span>
               </a>
             </span>
           </template>

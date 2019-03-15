@@ -10,7 +10,9 @@
         <td class="cart-table-counter">
             <div class="detail-counter">
                 <div @click="downQty(cartItem.rowId)"  class="detail-counter__left"><img src="images/detail-cart-arr-down.png"/></div>
-                <div class="detail-counter__center">{{cartItem.qty}}</div>
+                <div class="detail-counter__center">
+                    <input class="cart-col product_qty2" name="quantity[1]" type="text" :value="cartItem.qty">
+                </div>
                 <div @click="upQty(cartItem.rowId)" class="detail-counter__right"><img src="images/detail-cart-arr-up.png"/></div>
             </div>
         </td>

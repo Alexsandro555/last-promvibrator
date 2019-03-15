@@ -16,9 +16,6 @@
                         v-if="attribute.attribute_type_id==2"
                         :name="attribute.url_key"
                         :label="attribute.title"
-                        v-validate="'max:255'"
-                        :error-messages="errors.collect(attribute.title)"
-                        :data-vv-name="attribute.title"
                         :value="form[attribute.id]?form[attribute.id].value:null"
                         @input="updateAttribute($event, attribute.id)">
                       </v-text-field>
@@ -26,9 +23,6 @@
                         v-else-if="attribute.attribute_type_id==7"
                         :name="attribute.url_key"
                         :label="attribute.title"
-                        v-validate="'decimal:2'"
-                        :error-messages="errors.collect(attribute.title)"
-                        :data-vv-name="attribute.title"
                         :value="form[attribute.id]?form[attribute.id].value:null"
                         @input="updateAttribute($event, attribute.id)"
                         prefix="₽">
@@ -36,9 +30,6 @@
                       <v-text-field
                         v-else-if="attribute.attribute_type_id==3"
                         :name="attribute.url_key"
-                        v-validate="'integer'"
-                        :error-messages="errors.collect(attribute.title)"
-                        :data-vv-name="attribute.title"
                         :label="attribute.title"
                         @input="updateAttribute($event, attribute.id)"
                         :value="form[attribute.id]?form[attribute.id].value:null">
@@ -47,9 +38,6 @@
                         v-else-if="attribute.attribute_type_id==4"
                         :name="attribute.url_key"
                         :label="attribute.title"
-                        v-validate="'decimal'"
-                        :error-messages="errors.collect(attribute.title)"
-                        :data-vv-name="attribute.title"
                         @input="updateAttribute($event, attribute.id)"
                         :value="form[attribute.id]?form[attribute.id].value:null">
                       </v-text-field>

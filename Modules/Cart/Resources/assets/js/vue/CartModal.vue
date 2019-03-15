@@ -33,7 +33,8 @@
             </table>
             <br>
             <center>
-                <a href="/order" class="cart-submit">Оформить</a>
+                <!--<a href="/order" class="cart-submit">Оформить</a>-->
+                <input class="cart-submit" type="button" onclick="location.href='/order.php'" value="Оформить">
             </center>
             <br>
         </modal-window>
@@ -71,7 +72,3 @@
         }
      }
 </script>
-
-<style>
-
-</style>

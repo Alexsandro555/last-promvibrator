@@ -5,7 +5,7 @@
       <v-flex v-if="!loader">
         <v-card>
           <v-card-title>
-            <h1>Редактирование линейки продукции</h1>
+            <h1>Редактирование статьи</h1>
           </v-card-title>
           <v-card-text>
             <v-container>
@@ -28,8 +28,7 @@
                     <!--<file-box url="/files/upload" :fileable-id="Number(item.id)" :type-files="typeFiles"
                               :model="model"></file-box>-->
                     <v-flex text-xs-left>
-                      <v-btn large :class="{primary: valid, 'red lighten-3': !valid}" :disabled="isSending" @click.prevent="onSubmit">Сохранить
-                      </v-btn>
+                      <v-btn large :class="{primary: valid, 'red lighten-3': !valid}" :disabled="isSending" @click.prevent="onSubmit">Сохранить</v-btn>
                     </v-flex>
                   </v-form>
                 </v-flex>

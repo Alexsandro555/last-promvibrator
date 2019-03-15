@@ -16,7 +16,7 @@
         </td>
         <td class="center cart-table-rub">{{cartItem.price}}</td>
         <td class="center">{{cartItem.options.article}}</td>
-        <td class="center cart-table-del"><a href="#" @click.prevent="cartDelete(cartItem.rowId)"><img :src="'/../images/cart-table-del.png'"/></a></td>
+        <td class="center cart-table-del"><a href="#" @click.prevent="cartDelete(cartItem.rowId)"><img :src="'/css/images/close.gif'"/></a></td>
     </tr>
 </template>
 <script>
@@ -66,7 +66,7 @@
         width: 22px;
     }
     .cart-col{
-        background: rgba(0, 0, 0, 0) url("/images/col.png") no-repeat scroll 0 0;
+        //background: rgba(0, 0, 0, 0) url("/images/col.png") no-repeat scroll 0 0;
         border: medium none;
         color: #4f4f4f;
         font-weight: 600;
@@ -76,8 +76,8 @@
         width: 49px;
     }
     .tab-li-button{
-        margin-top: 16px;
+       // margin-top: 16px;
         position: relative;
-    //text-align: center;
+       //text-align: center;
     }
 </style>

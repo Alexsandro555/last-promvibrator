@@ -34,7 +34,7 @@ class OrderController extends Controller
    * @return Response
    */
   public function index() {
-    return view('order::index');
+    return view('order');
   }
 
   public function items() {
