@@ -4,7 +4,7 @@ namespace Modules\Order\Entities;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Catalog\Entities\Product;
+use Modules\Product\Entities\Product;
 
 class Order extends Model
 {

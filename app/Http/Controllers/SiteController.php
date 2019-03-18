@@ -15,16 +15,14 @@ use Modules\Files\Entities\File;
 
 class SiteController extends Controller
 {
+
   public function index()
   {
-    $productCategories = ProductCategory::all();
     $products = Product::with(['files','attributes','productCategory'])->where('active',1)->where('special',1)->get();
-    $articles = Article::all();
-    return view('index',compact('products','productCategories', 'articles'));
+    return view('index',compact('products', 'articles'));
   }
 
   public function catalogTypes($slug, Request $request) {
-    $articles = Article::all();
     $breadcrumbs = new Collection();
 
     if($request->has('id')) {
@@ -40,7 +38,7 @@ class SiteController extends Controller
       if($product->type_product_id) $breadcrumbs->push(new Breadcrumb($product->typeProduct->title, $product->typeProduct->url_key));
       if($product->line_product_id) $breadcrumbs->push(new Breadcrumb($product->lineProduct->title, $product->lineProduct->url_key));
       $breadcrumbs->push(new Breadcrumb($product->title, $product->url_key));
-      return view('detail', compact('product','lineProducts', 'typeProduct', 'groups','breadcrumbs', 'articles'));
+      return view('detail', compact('product','lineProducts', 'typeProduct', 'groups','breadcrumbs'));
     }
 
     $productCategory = ProductCategory::where('url_key', $slug)->first();
@@ -50,7 +48,7 @@ class SiteController extends Controller
       })->where('active',1)->paginate(10);
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
       $breadcrumbs->push(new Breadcrumb($productCategory->title, $slug));
-      return view('catalog', compact('products','productCategory','breadcrumbs', 'articles'));
+      return view('catalog', compact('products','productCategory','breadcrumbs'));
     }
 
     $productCategory = ProductCategory::with(['typeProducts'])->whereHas('typeProducts', function($query) use ($slug) {
@@ -63,7 +61,7 @@ class SiteController extends Controller
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
       $breadcrumbs->push(new Breadcrumb($productCategory->title, $productCategory->url_key));
       $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->title, $slug));
-      return view('catalog', compact('products','productCategory','breadcrumbs', 'articles'));
+      return view('catalog', compact('products','productCategory','breadcrumbs'));
     }
 
     $productCategory = ProductCategory::with(['typeProducts.lineProducts'])->whereHas('typeProducts.lineProducts', function($query) use ($slug) {
@@ -77,7 +75,7 @@ class SiteController extends Controller
       $breadcrumbs->push(new Breadcrumb($productCategory->title, $productCategory->url_key));
       $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->title, $productCategory->typeProducts[0]->url_key));
       $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->lineProducts[0]->title, $productCategory->typeProducts[0]->lineProducts[0]->url_key));
-      return view('catalog', compact('products', 'productCategory','breadcrumbs', 'articles'));
+      return view('catalog', compact('products', 'productCategory','breadcrumbs'));
     }
   }
 

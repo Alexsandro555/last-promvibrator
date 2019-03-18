@@ -6,7 +6,6 @@ use Modules\Order\Http\Requests\OrderRequest;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Order\Repositories\OrderRepository;
-use Modules\Catalog\Entities\Product;
 use Modules\Cart\Repositories\CartRepository;
 use Modules\Order\Entities\Order;
 
@@ -23,6 +22,8 @@ class OrderController extends Controller
 
   /**
    * OrderController constructor.
+   * @param OrderRepository $orderRepository
+   * @param CartRepository $cartRepository
    */
   public function __construct(OrderRepository $orderRepository, CartRepository $cartRepository) {
     $this->orderRepository = $orderRepository;
@@ -42,25 +43,15 @@ class OrderController extends Controller
   }
 
   /**
-   * Show the form for creating a new resource.
-   * @return Response
-   */
-  public function create()
-  {
-    return view('order::create');
-  }
-
-  /**
    * Store a newly created resource in storage.
    * @param  Request $request
    * @return Response
    */
   public function store(OrderRequest $request)
   {
-    $cartProducts = $this->cartRepository->getAll()['products'];
     $productIds = [];
-    foreach($cartProducts as $key => $cartProduct)
-    {
+    $cartProducts = $this->cartRepository->getAll()['products'];
+    foreach($cartProducts as $key => $cartProduct) {
       array_push($productIds, $cartProduct->id);
     }
     if(count($productIds)>0) {
@@ -70,42 +61,7 @@ class OrderController extends Controller
       return view('order::success', ['number' => $order->number]);
     }
     else {
-      return redirect()->back()->withErrors(['emptyCart' => 'Корзина не должна быть пустой']);
+      return redirect()->back()->withInput()->withErrors(['emptyCart' => 'Корзина не должна быть пустой']);
     }
-  }
-
-  /**
-   * Show the specified resource.
-   * @return Response
-   */
-  public function show()
-  {
-    return view('order::show');
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   * @return Response
-   */
-  public function edit()
-  {
-    return view('order::edit');
-  }
-
-  /**
-   * Update the specified resource in storage.
-   * @param  Request $request
-   * @return Response
-   */
-  public function update(Request $request)
-  {
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   * @return Response
-   */
-  public function destroy()
-  {
   }
 }

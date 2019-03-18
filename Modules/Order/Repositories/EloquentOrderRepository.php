@@ -31,25 +31,25 @@ class EloquentOrderRepository implements OrderRepository
     $user = User::where('email', $attributes['email'])->first();
     if($user) {
       $user->update([
-        'name' => $attributes['surname'].' '.$attributes['firstname'].' '.$attributes['patronymiс'],
-        'company_name' => $attributes['company_name'],
-        'telephone' => $attributes['telephone']
+        'name' => $attributes['fio'],
+        'company_name' => $attributes['company'],
+        'telephone' => $attributes['tel']
       ]);
     }
     else {
       $user = User::Create([
-        'name' => $attributes['surname'].' '.$attributes['firstname'].' '.$attributes['patronymiс'],
+        'name' => $attributes['fio'],
+        'company_name' => $attributes['company'],
+        'telephone' => $attributes['tel'],
         'email' => $attributes['email'],
-        'company_name' => $attributes['company_name'],
-        'password' => bcrypt(str_random(10)),
-        'telephone' => $attributes['telephone']
+        'password' => bcrypt(str_random(10))
       ]);
     }
 
     return $this->model->create([
       'number' => strtoupper(substr(uniqid(sha1(time())),0,5)),
       'user_id' => $user->id,
-      'note' => $attributes['note']
+      'note' => $attributes['description']
     ]);
   }
 

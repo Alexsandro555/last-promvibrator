@@ -107,7 +107,7 @@
       <a class="logo-bottom" href=""><img src="{{asset('css/images/logo-bottom.png')}}" alt="logo"></a>
     </div>
     <div class="footer-bottom">
-      <div class="footer-bottom-copy">&copy; 2018 Promvibrator.ru</div>
+      <div class="footer-bottom-copy">&copy; 2019 Promvibrator.ru</div>
       <div class="footer-bottom-menu">
         <a href="">Главная</a>
         <a href="">Заказ</a>
@@ -115,9 +115,10 @@
         <a href="">Контакты</a>
       </div>
       <div class="footer-bottom-phone">+7 (495) 780-47-96</div>
-      <a class="footer-bottom-callback" href="">заказать звонок</a>
+      <a class="footer-bottom-callback" @click.prev="showCallback" href="#">заказать звонок</a>
     </div>
   </footer>
+  <callback/>
 </div>
 <script src="{{asset('js/main.js')}}" type="application/javascript"></script>
 @yield('view.scripts')

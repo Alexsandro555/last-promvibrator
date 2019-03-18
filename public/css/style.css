@@ -1684,3 +1684,6 @@ input:hover.callback-submit {
   padding-right: 60px;
 }
 
+.form-error {
+  color: red;
+}

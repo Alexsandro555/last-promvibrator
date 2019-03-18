@@ -14,9 +14,8 @@ class OrderRequest extends FormRequest
   public function rules()
   {
     return [
-      'firstname' => 'required|max:80',
-      'company_name' => 'required|max:50',
-      'telephone' => 'required',
+      'fio' => 'required|max:80',
+      'tel' => 'required',
       'email' => 'email'
     ];
   }

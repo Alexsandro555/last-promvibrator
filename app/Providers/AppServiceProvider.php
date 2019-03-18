@@ -3,9 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Product\Entities\TypeProduct;
+use Modules\Product\Entities\ProductCategory;
 use Faker\Generator as FakerGenerator;
 use Faker\Factory as FakerFactory;
+use Modules\Article\Models\Article;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,10 +17,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      view()->composer('layouts.master', function($view) {
-        $typeProducts = TypeProduct::take(8)->get();
-        $view->with('typeProducts', $typeProducts);
-      });
+
+      view()->share('productCategories', ProductCategory::all());
+      view()->share('articles', Article::all());
+
+      /*view()->composer('layouts.master', function($view) {
+        $view->with('productCategories', ProductCategory::all());
+      });*/
     }
 
     /**

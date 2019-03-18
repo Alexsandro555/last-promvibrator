@@ -9,8 +9,6 @@
         "Modules\\Callback\\Providers\\CallbackServiceProvider"
     ],
     "aliases": {},
-    "files": [
-        "start.php"
-    ],
+    "files": [],
     "requires": []
 }

@@ -3,10 +3,7 @@
 @section('title', "ПРОМВИБРАТОР.РУ. Площадочные вибраторы, глубинные вибраторы и пневматические вибраторы")
 
 @section('sidebar')
-  @foreach($productCategories as $productCategory)
-    <div class="content-left-menu"><a class="partition" href="/{{$productCategory->url_key}}/">{{$productCategory->title}}</a></div>
-  @endforeach
-  <div class="content-left-menu"></div>
+  @include('sidebar_menu',['elements' => $productCategories])
   @include('sidebar',['articles' => $articles])
 @stop
 

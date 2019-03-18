@@ -120,38 +120,11 @@
         items: []
       }
     },
-    beforeRouteEnter(to, from, next) {
-      next(vm => {
-        vm.load()
+    created() {
+      axios.get('/order.php/items').then(response => {
+        this.items = response.data
+        this.loader = false
       })
-    },
-    computed: {
-    },
-    methods: {
-      load() {
-        axios.get('/order/items').then(response => {
-          this.items = response.data
-          this.loader = false
-        })
-      },
-      /*addProduct() {
-        this.add()
-          .then(response => {
-            this.$router.push({name: 'edit-Product', params: {id: response.id.toString()}})
-          })
-          .catch(error => {
-          })
-      },*/
-      goToPage(item) {
-        let url = '/Product/detail/'
-        url = url + item.url_key
-        window.open(url, '_blank')
-      },
-      deleteItem(item) {
-        if (confirm('Вы уверены что хотите удалить запись?')) {
-          this.delete(item.id)
-        }
-      }
     }
   }
 </script>

@@ -108,6 +108,14 @@
           {
             text: 'Страницы',
             path: '/pages'
+          },
+          {
+            text: 'Заказы',
+            path: '/orders'
+          },
+          {
+            text: 'Обратные звонки',
+            path: '/callbacks'
           }
         ]
       }

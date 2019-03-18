@@ -33,6 +33,7 @@ mix.webpackConfig({
       '@pages': __dirname + '/Modules/Page/Resources/assets/js',
       '@cart': __dirname + '/Modules/Cart/Resources/assets/js',
       '@callback': __dirname + '/Modules/Callback/Resources/assets/js',
+      '@order': __dirname + '/Modules/Order/Resources/assets/js',
       cartScss: path.resolve(__dirname + '/Modules/Cart/Resources/assets/scss'),
       articleScss: path.resolve(__dirname + '/Modules/Article/Resources/assets/sass')
     }
