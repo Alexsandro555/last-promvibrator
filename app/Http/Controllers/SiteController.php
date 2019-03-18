@@ -45,7 +45,7 @@ class SiteController extends Controller
     if($productCategory) {
       $products = Product::with(['files','attributes','productCategory'])->whereHas('productCategory',function($query) use ($slug) {
         $query->where('url_key',$slug);
-      })->where('active',1)->orderBy('sort', 'asc')->paginate(10);
+      })->where('active',1)->orderBy('sort', 'asc')->paginate(9);
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
       $breadcrumbs->push(new Breadcrumb($productCategory->title, $slug));
       return view('catalog', compact('products','productCategory','breadcrumbs'));
@@ -57,7 +57,7 @@ class SiteController extends Controller
     if($productCategory) {
       $products = Product::with(['files','attributes','typeProduct'])->whereHas('typeProduct', function($query) use ($slug) {
         $query->where('url_key',$slug);
-      })->where('active',1)->orderBy('sort', 'asc')->paginate(10);
+      })->where('active',1)->orderBy('sort', 'asc')->paginate(9);
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
       $breadcrumbs->push(new Breadcrumb($productCategory->title, $productCategory->url_key));
       $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->title, $slug));
@@ -70,7 +70,7 @@ class SiteController extends Controller
     if($productCategory) {
       $products = Product::with(['files','attributes','lineProduct'])->whereHas('lineProduct', function($query) use ($slug) {
         $query->where('url_key',$slug);
-      })->where('active',1)->orderBy('sort', 'asc')->paginate(10);
+      })->where('active',1)->orderBy('sort', 'asc')->paginate(9);
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
       $breadcrumbs->push(new Breadcrumb($productCategory->title, $productCategory->url_key));
       $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->title, $productCategory->typeProducts[0]->url_key));
