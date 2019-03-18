@@ -55,13 +55,13 @@ class SiteController extends Controller
       return view('catalog', compact('products','productCategory','breadcrumbs'));
     }
 
-    $productCategory = ProductCategory::with(['typeProducts', 'lineProducts' => function($query) {
-      $query->orderBy('sort', 'asc');
-    }])->whereHas('typeProducts', function($query) use ($slug) {
+    $productCategory = ProductCategory::with(['typeProducts'])->whereHas('typeProducts', function($query) use ($slug) {
       $query->where('url_key',$slug);
     })->first();
     if($productCategory) {
-      $products = Product::with(['files','attributes','typeProduct'])->whereHas('typeProduct', function($query) use ($slug) {
+      $products = Product::with(['files','attributes','typeProduct','lineProduct' => function($query) {
+        $query->orderBy('sort', 'asc');
+      }])->whereHas('typeProduct', function($query) use ($slug) {
         $query->where('url_key',$slug);
       })->where('active',1)->orderBy('sort', 'asc')->paginate(9);
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
