@@ -58,7 +58,7 @@
         <li><a href="#tabs-1">Описание</a></li>
       </ul>
       @foreach($groups as $group)
-        <div id="tabs-group-{{$group->id}}">
+        <div class="tabs-content" id="tabs-group-{{$group->id}}">
           @foreach($product->attributes->filter(function($attribute, $key) use (&$group){
               return $attribute->attribute_group_id == $group->id;
           })->sortBy('sort')->chunk(10) as $chunkAttributes)

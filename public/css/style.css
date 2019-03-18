@@ -1725,3 +1725,7 @@ input:hover.callback-submit {
   font-size: 15px;
 }
 
+.tabs-content {
+  clear: both;
+}
+
