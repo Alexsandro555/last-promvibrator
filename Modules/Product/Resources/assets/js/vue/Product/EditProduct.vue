@@ -258,7 +258,9 @@
       onSubmit() {
         if (this.$refs.form.validate()) {
           this.isSending = true
-          this.save(this.form).then(response => {
+          this.save(_.pick(this.form, [
+            'id', 'title', 'price', 'description','qty', 'active', 'sort', 'onsale', 'special', 'need_order', 'product_category_id', 'type_product_id', 'line_product_id', 'vendor', 'IEC'
+          ])).then(response => {
             this.isSending = false
             this.$router.push('list-product')
           })
