@@ -487,15 +487,15 @@ a:hover.header-menu-a-j {
 /* оформление полосы по которой ходит ползунок */
 
 .ui-widget-content {
-  border: 1px solid #D4D4D4;
-  background: #fff;
+  //border: 1px solid #D4D4D4;
+ //background: #fff;
 }
 
 /* оформление активного участка (между двумя ползунками) */
 
 .ui-widget-header {
-  border: 1px solid #D4D4D4;
-  background: #f00;
+  //border: 1px solid #D4D4D4;
+  //background: #f00;
 }
 
 /* скругление для полосы слайдера */
@@ -1687,3 +1687,41 @@ input:hover.callback-submit {
 .form-error {
   color: red;
 }
+
+.tabs {
+  min-height: 426px;
+}
+
+.tabs li {
+  font-size: 14px;
+  font-weight: bold;
+  //background-color: #4f4f4f;
+  background-color: #43427B;
+  margin: 0;
+  float: left;
+  text-transform: uppercase;
+}
+
+.tabs li a {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 15px 30px !important;
+}
+.tabs li a:focus, .tabs li a:active {
+  outline: none !important;
+  outline-color: transparent;
+}
+
+.tabs li.ui-tabs-active {
+  background-color: #f1601d;
+}
+.tabs li.ui-tabs-active a {
+  padding-bottom: 25px !important;
+}
+.tabs p {
+  margin-top: 0;
+  font-weight: normal;
+  font-size: 15px;
+}
+

@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-  <div id="content">
+  <div id="content product-details">
     <div class="content-right-navtral">
       @foreach($breadcrumbs as $key => $breadcrumb)
         @if(!$loop->last)
@@ -90,10 +90,6 @@
   </div>
   <a href=""><img src="{{asset('css/images/banner-sale.png')}}" alt="img" class="img-banner"></a>
 @stop
-
-@section('view.style')
-  <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
-@endsection
 
 @section('view.scripts')
   <script src="{{asset('js/jquery-ui.min.js')}}"></script>
