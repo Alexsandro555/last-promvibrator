@@ -47,7 +47,7 @@
     data: function () {
       return {
         images: [],
-        index: 1
+        index: this.curKey
       }
     },
     computed: {
