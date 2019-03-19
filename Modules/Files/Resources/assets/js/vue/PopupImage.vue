@@ -63,6 +63,7 @@
     },
     watch: {
       curKey(val) {
+        console.log(val)
         this.index = val
       }
     },
@@ -71,7 +72,7 @@
     },
     methods: {
       closeModal() {
-        this.$emit('close')
+        this.$emit('close', this.index)
       },
       next() {
         this.elements.forEach((element, index) => {

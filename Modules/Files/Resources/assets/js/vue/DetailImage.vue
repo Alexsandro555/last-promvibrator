@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <popup-image v-if="images.length>0" :modal="modal" :cur-key="curKey" :elements="images" @close="closeModal"/>
+    <popup-image v-if="images.length>0" :modal="modal" :cur-key="curKey" :elements="images" @close="closeModal($event)"/>
   </div>
 </template>
 <script>
@@ -47,9 +47,9 @@
       selectImage() {
         this.modal = true;
       },
-      closeModal() {
+      closeModal(id) {
         this.modal=false
-        this.curKey = this.images[0].id
+        this.curKey = id
         this.images.forEach(image => {
           if(image.id === this.curKey) {
             this.curImage = image.config.files.main.filename;
