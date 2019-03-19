@@ -1,7 +1,7 @@
 <template>
   <div class="content-right-product-left">
     <div class="content-right-product-img-big">
-      <img v-if="curImage" :src="'/storage/'+curImage" @click.prev="selectImage" alt="img" class="product-img-big"/>
+      <img v-if="images.length>0" :src="'/storage/'+curImage" @click.prev="selectImage" alt="img" class="product-img-big"/>
       <img v-else src="css/images/no-image-medium.png"/>
     </div>
     <div class="content-right-product-img-small">
@@ -27,8 +27,8 @@
     },
     data: function () {
       return {
-        curImage: this.images.length>0?this.images[0].config.files.main.filename:'',
-        curKey: this.images.length>0?this.images[0].id:1,
+        curImage: this.images[0].config.files.main.filename,
+        curKey: this.images[0].id,
         modal: false
       }
     },
@@ -49,7 +49,7 @@
       },
       closeModal() {
         this.modal=false
-        this.curKey =1
+        this.curKey = this.images.
         this.images.forEach(image => {
           if(image.id === this.curKey) {
             this.curImage = image.config.files.main.filename;
