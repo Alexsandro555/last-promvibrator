@@ -28,7 +28,7 @@
     data: function () {
       return {
         curImage: this.images.length>0?this.images[0].config.files.main.filename:'',
-        curKey: 1,
+        curKey: this.images.length>0?this.images[0].id:1,
         modal: false
       }
     },
