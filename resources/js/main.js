@@ -26,7 +26,7 @@ import callback from '@callback/vuex/callbacks/state'
 Vue.component('callback', Callback)
 
 // DetailImage
-import DetailImage from '@/vue/DetailImage'
+import DetailImage from '@file/vue/DetailImage'
 Vue.component('detail-image', DetailImage)
 
 import mutations from "./vuex/mutations";

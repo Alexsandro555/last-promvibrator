@@ -21,10 +21,12 @@
     </div>
     <h1 class="h1-product">{{$product->title}}</h1>
     <div class="content-right-product">
-      @if($product->special)
-        <div class="tab-li-stiker-hit"></div>
-      @endif
-      <detail-image :url="'/product-images/{{$product->id}}'"></detail-image>
+      <div class="contet-right-product-left">
+        @if($product->special)
+          <div class="tab-li-stiker-hit"></div>
+        @endif
+        <detail-image :images="{{$product->files}}"/>
+      </div>
       <div class="content-right-product-right">
         <div class="product-right-stock"><b>На складе:</b> {{$product->qty>0?"есть":"нет"}}</div>
         <div class="product-right-garant"><b>Гарантия:</b> 12 месяцев.</div>

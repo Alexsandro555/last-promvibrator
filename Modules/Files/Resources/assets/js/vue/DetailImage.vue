@@ -1,57 +1,60 @@
 <template>
-  <div class="detail__image--wrapper">
-    <div v-if="stock" class="detail__image-label">
-      Акция!
+  <div class="content-right-product-left">
+    <div class="content-right-product-img-big">
+      <img v-if="curImage" :src="'/storage/'+curImage" @click.prev="selectImage" alt="img" class="product-img-big"/>
+      <img v-else src="css/images/no-image-medium.png"/>
     </div>
-    <div class="detail__image">
-      <div class="image-wrapper">
-        <img v-if="curImage" :src="curImage"/>
-        <img v-else src="/images/no-image.png"/>
-      </div>
-      <div class="detail__image-carousel">
-        <carousel @selected="selectSlide($event)" :images="items"></carousel>
+    <div class="content-right-product-img-small">
+      <div v-for="image in images" :key="image.id" class="product-img-small-block">
+        <div class="product-img-small"  @click.prev="selectSlide(image.id)">
+          <span v-if="image.id === curKey" class="arrow-img-small"></span>
+          <img :src="'/storage/'+image.config.files.small.filename"/>
+        </div>
       </div>
     </div>
+    <popup-image :modal="modal" :cur-key="curKey" :elements="images" @close="closeModal"/>
   </div>
 </template>
 <script>
-  import axios from 'axios'
-  import Carousel from './Carousel.vue'
+  import PopupImage from '@file/vue/PopupImage'
 
   export default {
     props: {
-      url: String,
-      stock: {
-        Type: Boolean,
-        default: false
+      images: {
+        type: Array,
+        default: []
       }
     },
     data: function () {
       return {
-        elements: [],
-        items: [],
-        curImage: '',
+        curImage: this.images.length>0?this.images[0].config.files.main.filename:'',
+        curKey: 1,
+        modal: false
       }
     },
-    mounted() {
-      axios.get(this.url).then(response => {
-        this.elements = response.data
-        response.data.forEach(element => {
-          this.items.push({'id': element.id, 'file': element.config.files.small.filename});
-        });
-        this.curImage = this.items.length > 0 ? '/storage/' + this.elements[0].config.files.main.filename : null
-      });
-    },
     components: {
-      Carousel
+      PopupImage
     },
     methods: {
-      selectSlide: function (id, event) {
-        this.elements.forEach(element => {
-          if (element.id === id) {
-            this.curImage = '/storage/' + element.config.files.main.filename;
+      selectSlide(id, event) {
+        this.curKey = id;
+        this.images.forEach(image => {
+          if(image.id === id) {
+            this.curImage = image.config.files.main.filename;
           }
-        });
+        })
+      },
+      selectImage() {
+        this.modal = true;
+      },
+      closeModal() {
+        this.modal=false
+        this.curKey =1
+        this.images.forEach(image => {
+          if(image.id === this.curKey) {
+            this.curImage = image.config.files.main.filename;
+          }
+        })
       }
     }
   }

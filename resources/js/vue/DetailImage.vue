@@ -8,10 +8,12 @@
         <div class="product-img-small"  @click="selectSlide(item.id)"><span v-if="item.id === curKey" class="arrow-img-small"></span><img :src="'/storage/'+item.file"/></div>
       </div>
     </div>
+    <popup-image v-if="elements.length>0" :modal="modal" :curKey="curKey" :elements="elements" @close="modal=false"/>
   </div>
 </template>
 <script>
   import axios from "axios/index"
+  import PopupImage from '@file/vue/PopupImage'
 
   export default {
     props: {
@@ -22,8 +24,12 @@
         elements: [],
         items:[],
         curImage: '',
-        curKey: 1,
+        curKey: 0,
+        modal: true
       }
+    },
+    components: {
+      PopupImage
     },
     mounted() {
       let that = this;
