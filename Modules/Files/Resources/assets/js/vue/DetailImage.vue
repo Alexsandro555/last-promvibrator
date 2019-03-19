@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <popup-image :modal="modal" :cur-key="curKey" :elements="images" @close="closeModal"/>
+    <popup-image v-if="images.length>0" :modal="modal" :cur-key="curKey" :elements="images" @close="closeModal"/>
   </div>
 </template>
 <script>
