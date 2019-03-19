@@ -49,7 +49,7 @@
       },
       closeModal() {
         this.modal=false
-        this.curKey = this.images.
+        this.curKey = this.images[0].id
         this.images.forEach(image => {
           if(image.id === this.curKey) {
             this.curImage = image.config.files.main.filename;
