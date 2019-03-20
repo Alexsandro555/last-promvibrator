@@ -19,7 +19,7 @@ class SkuOptionsController extends Controller
   }
 
   public function save(Request $request) {
-    $options = $this->model->where('sku_id', $request->id)->get();
+    $options = $this->model->where('sku_id', $request->id)->get()->toArray();
     foreach($options as $option) {
       $option->delete();
     }

@@ -48,9 +48,9 @@
                         </v-data-table>
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn @click="addSkuOptions" color="primary" dark class="text-left mb-2">
+                        <!--<v-btn @click="addSkuOptions" color="primary" dark class="text-left mb-2">
                             <v-icon>add</v-icon>
-                        </v-btn>
+                        </v-btn>-->
                     </v-card-actions>
                 </v-card>
             </v-flex>
@@ -92,10 +92,10 @@
         },
         methods: {
             addSkuOptions() {
-                this.add()
+                /*this.add()
                     .then(response => {
                         this.$router.push({name: 'edit-skuoptions', params: { id: response.id.toString()}})
-                    })
+                    })*/
             },
             goToPage(item) {
                 let url = '/skuoptions/detail/'

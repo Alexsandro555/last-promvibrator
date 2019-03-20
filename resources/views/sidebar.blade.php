@@ -17,5 +17,5 @@
       <div class="content-left-articles-block-time">{{Carbon\Carbon::parse($article->updated_at)->format('d.m.Y')}}</div>
     </div>
   @endforeach
-  <a class="content-left-articles-link" href="">Все статьи</a>
+  <!--<a class="content-left-articles-link" href="">Все статьи</a>-->
 </div>

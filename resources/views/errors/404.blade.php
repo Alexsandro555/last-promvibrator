@@ -1,23 +1,21 @@
 @extends('layouts.master')
 
-@section('title', 'статьи')
+@section('title', 'Страница не найдена')
 
-@section('menu')
-    <div class="menu-wrapper wrapper">
-        <div class="abs-position">
-            <left-menu></left-menu>
-        </div>
-    </div>
-@endsection
+@section('sidebar')
+    @include('sidebar_menu',['elements' => $productCategories])
+    @include('sidebar',['articles' => $articles])
+@stop
 
 @section('content')
-    <section class="section">
-        <div class="container catalog">
-            <!--<left-menu></left-menu>-->
-            <div class="product-catalog">
-                <h1>Страница не найдена</h1>
-                К сожалению, такой страницы не существует.
+    <div id="content">
+        <section class="section">
+            <div class="container catalog">
+                <div class="product-catalog">
+                    <h1>Страница не найдена</h1>
+                    К сожалению, такой страницы не существует.
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 @endsection

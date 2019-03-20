@@ -39,7 +39,7 @@
         </v-data-table>
       </v-card-text>
       <v-card-actions>
-        <v-btn @click="addSku" color="primary" dark class="text-left mb-2">
+        <v-btn @click="onAddSku" color="primary" dark class="text-left mb-2">
           <v-icon>add</v-icon>
         </v-btn>
       </v-card-actions>
@@ -154,7 +154,7 @@
       }
     },
     methods: {
-      addSku() {
+      onAddSku() {
         this.saveSku({'product_id': Number(this.id)}).then(response => {
           this.onEdit(response.id)
         })

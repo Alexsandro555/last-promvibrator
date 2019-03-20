@@ -8,6 +8,7 @@ use Modules\Product\Entities\ProductCategory;
 use Modules\Product\Entities\TypeProduct;
 use Modules\Product\Entities\LineProduct;
 use Modules\Article\Models\Article;
+use Modules\Page\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use App\Breadcrumb;
@@ -23,6 +24,17 @@ class SiteController extends Controller
   }
 
   public function catalogTypes($slug, Request $request) {
+
+    $article = Article::where('url_key',str_replace( '.html', '', $slug))->first();
+    if($article) {
+      return view('article', compact('article'));
+    }
+
+    $page = Page::where('url_key',str_replace( '.html', '', $slug))->first();
+    if($page) {
+      return view('page', compact('page'));
+    }
+
     $breadcrumbs = new Collection();
 
     if($request->has('id')) {
