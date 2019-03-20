@@ -53,7 +53,7 @@
 
       <div class="header-center-search">
         <span class="span-big">Поиск по каталогу:</span><br>
-        <input name="name" type="text" value=""><br>
+        <input name="name" type="text" @keyup.enter="search" v-model="searchText"><br>
         <span class="span-small">Например: </span> вибратор взрывозащищенной серии
       </div>
     </div>
