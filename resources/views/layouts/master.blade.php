@@ -39,9 +39,9 @@
     <div class="header-center">
       <a class="header-logo" href="/"></a>
       <div id="basket"></div>
-      <div class="header-center-phone"><span>+7 (495)</span> 780-47-96</div>
+      <div class="header-center-phone"><span>+7 (495)</span> 123-33-21</div>
       <div class="header-center-time">Промышленные<br />площадочные<br>вибраторы</div>
-      <a class="header-center-callback2"  href="mailto:info@promvibrator.ru">info@promvibrator.ru</a>
+      <a class="header-center-callback2"  href="mailto:info@oooleader.ru">info@oooleader.ru</a>
       <div id="callback_fixel" style="display:none;"></div>
       <div id="callback" style="display:none;">
         <div class="callback_close"></div>
@@ -54,7 +54,7 @@
       <div class="header-center-search">
         <span class="span-big">Поиск по каталогу:</span><br>
         <input name="name" type="text" @keyup.enter="search" v-model="searchText"><br>
-        <span class="span-small">Например: </span> вибратор взрывозащищенной серии
+        <span class="span-small">Например: </span> MVE 60/3
       </div>
     </div>
     <div class="header-menu">
@@ -84,18 +84,14 @@
         <a href="">Доставка и оплата</a><br>
         <a href="">Возврат</a><br>
         <a href="">Статьи</a><br>
-        <a href="">Контакты</a><br>
+        <a href="/contacts.html">Контакты</a><br>
       </div>
 
       <div class="footer-top-block-b">
         <div class="footer-top-block-title">Каталог</div>
-        <a href="">Площадочные вибраторы</a><br>
-        <a href="">Классическая серия</a><br>
-        <a href="">Взрывозащищенная серия</a><br>
-        <a href="">Со семными крышками</a><br>
-        <a href="">Пневматические вибраторы</a><br>
-        <a href="">Глубинные вибраторы</a><br>
-        <a href="">Виброрейки</a><br>
+        @foreach($productCategories as $productCategory)
+          <a href="/{{$productCategory->url_key}}/">{{$productCategory->title}}</a><br>
+        @endforeach
       </div>
 
       <div class="footer-top-block-c">
@@ -109,12 +105,12 @@
     <div class="footer-bottom">
       <div class="footer-bottom-copy">&copy; 2019 Promvibrator.ru</div>
       <div class="footer-bottom-menu">
-        <a href="">Главная</a>
-        <a href="">Заказ</a>
+        <a href="/">Главная</a>
+        <a href="/order.php">Заказ</a>
         <a href="">Партнеры</a>
-        <a href="">Контакты</a>
+        <a href="/contacts.html">Контакты</a>
       </div>
-      <div class="footer-bottom-phone">+7 (495) 780-47-96</div>
+      <div class="footer-bottom-phone">+7 (495) 123-33-21</div>
       <a class="footer-bottom-callback" @click.prev="showCallback" href="#">заказать звонок</a>
     </div>
   </footer>

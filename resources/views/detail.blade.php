@@ -3,7 +3,7 @@
 @section('title', $product->title.' - '.$product->price.'..ПРОМВИБРАТОР.РУ.')
 
 @section('sidebar')
-  <div class="content-left-menu"></div>
+  @include('sidebar_nested_menu',['productCategory' => $productCategory])
   @include('sidebar',['articles' => $articles])
 @stop
 

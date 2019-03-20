@@ -20,7 +20,7 @@ class SiteController extends Controller
   public function index()
   {
     $products = Product::with(['files','attributes','productCategory'])->where('active',1)->where('special',1)->get();
-    return view('index',compact('products', 'articles'));
+    return view('index',compact('products'));
   }
 
   public function catalogTypes($slug, Request $request) {
@@ -42,6 +42,7 @@ class SiteController extends Controller
       $product = Product::with(['files','attributes.attribute_unit','productCategory','lineProduct', 'typeProduct'])->whereHas('productCategory',function($query) use ($slug) {
         $query->where('url_key',$slug);
       })->where('old_id',$request->id)->firstOrFail();
+      $productCategory = ProductCategory::with(['typeProducts.lineProducts'])->find($product->product_category_id);
       $groups = AttributeGroup::all();
       $typeProduct = TypeProduct::with('lineProducts')->find($product->type_product_id);
       $lineProducts = LineProduct::where('type_product_id',$product->type_product_id)->get();
@@ -50,7 +51,7 @@ class SiteController extends Controller
       if($product->type_product_id) $breadcrumbs->push(new Breadcrumb($product->typeProduct->title, $product->typeProduct->url_key));
       if($product->line_product_id) $breadcrumbs->push(new Breadcrumb($product->lineProduct->title, $product->lineProduct->url_key));
       $breadcrumbs->push(new Breadcrumb($product->title, $product->url_key));
-      return view('detail', compact('product','lineProducts', 'typeProduct', 'groups','breadcrumbs'));
+      return view('detail', compact('product','productCategory', 'lineProducts', 'typeProduct', 'groups','breadcrumbs'));
     }
 
     $productCategory = ProductCategory::where('url_key', $slug)->first();
@@ -105,6 +106,11 @@ class SiteController extends Controller
   public function detail($slug) {
     $product = Product::with('files')->where('url_key',$slug)->first();
     return view('detail', compact('product'));
+  }
+
+  public function akzia() {
+      $products = Product::where('onsale', true)->get();
+      return view('index',compact('products'));
   }
 
   public function images($id) {
