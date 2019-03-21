@@ -39,9 +39,16 @@ class SiteController extends Controller
 
     if($request->has('id')) {
       $slug = str_replace('.php','',$slug);
+      // проверка на старые id
+      $isRedirect = Product::with(['files','attributes.attribute_unit','productCategory','lineProduct', 'typeProduct'])->whereHas('productCategory',function($query) use ($slug) {
+        $query->where('url_key',$slug);
+      })->where('old_id',$request->id)->where('active',0)->first();
+      if($isRedirect) {
+        return redirect('/');
+      }
       $product = Product::with(['files','attributes.attribute_unit','productCategory','lineProduct', 'typeProduct'])->whereHas('productCategory',function($query) use ($slug) {
         $query->where('url_key',$slug);
-      })->where('old_id',$request->id)->firstOrFail();
+      })->where('old_id',$request->id)->where('active',1)->firstOrFail();
       $productCategory = ProductCategory::with(['typeProducts.lineProducts'])->find($product->product_category_id);
       $groups = AttributeGroup::all();
       $typeProduct = TypeProduct::with('lineProducts')->find($product->type_product_id);
@@ -54,7 +61,12 @@ class SiteController extends Controller
       return view('detail', compact('product','productCategory', 'lineProducts', 'typeProduct', 'groups','breadcrumbs'));
     }
 
-    $productCategory = ProductCategory::where('url_key', $slug)->first();
+    $isRedirect = ProductCategory::where('url_key', $slug)->where('active',0)->first();
+    if($isRedirect) {
+      return redirect('/');
+    }
+
+    $productCategory = ProductCategory::where('url_key', $slug)->where('active',1)->first();
     if($productCategory) {
       $products = Product::with(['files','attributes','productCategory', 'typeProduct' => function($query) {
         $query->orderBy('sort', 'asc');
@@ -66,6 +78,13 @@ class SiteController extends Controller
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
       $breadcrumbs->push(new Breadcrumb($productCategory->title, $slug));
       return view('catalog', compact('products','productCategory','breadcrumbs'));
+    }
+
+    $isRedirect = ProductCategory::with(['typeProducts'])->whereHas('typeProducts', function($query) use ($slug) {
+      $query->where('url_key',$slug)->where('active',0);
+    })->first();
+    if($isRedirect) {
+      return redirect('/');
     }
 
     $productCategory = ProductCategory::with(['typeProducts'])->whereHas('typeProducts', function($query) use ($slug) {
@@ -83,9 +102,16 @@ class SiteController extends Controller
       return view('catalog', compact('products','productCategory','breadcrumbs'));
     }
 
+    $isRedirect = ProductCategory::with(['typeProducts.lineProducts'])->whereHas('typeProducts.lineProducts', function($query) use ($slug) {
+      $query->where('url_key',$slug);
+    })->where('active',0)->first();
+    if($isRedirect) {
+      return redirect('/');
+    }
+
     $productCategory = ProductCategory::with(['typeProducts.lineProducts'])->whereHas('typeProducts.lineProducts', function($query) use ($slug) {
       $query->where('url_key',$slug);
-    })->first();
+    })->where('active',1)->first();
     if($productCategory) {
       $products = Product::with(['files','attributes','lineProduct'])->whereHas('lineProduct', function($query) use ($slug) {
         $query->where('url_key',$slug);
@@ -96,6 +122,8 @@ class SiteController extends Controller
       $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->lineProducts[0]->title, $productCategory->typeProducts[0]->lineProducts[0]->url_key));
       return view('catalog', compact('products', 'productCategory','breadcrumbs'));
     }
+
+    abort(404);
   }
 
   public function lineProduct($slugTypeProduct, $slugLineProduct) {
