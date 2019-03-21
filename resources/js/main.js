@@ -29,6 +29,10 @@ Vue.component('callback', Callback)
 import DetailImage from '@file/vue/DetailImage'
 Vue.component('detail-image', DetailImage)
 
+// Products
+import Products from '@/vue/Products'
+Vue.component('products', Products)
+
 import mutations from "./vuex/mutations";
 import getters from "./vuex/getters";
 const store = new Vuex.Store({

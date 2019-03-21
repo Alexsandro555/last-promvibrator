@@ -31,6 +31,10 @@ class Product extends Model
     return $this->belongsToMany(Attribute::class, 'attribute_values')->withPivot('boolean_value', 'date_value', 'integer_value', 'string_value', 'decimal_value', 'text_value', 'list_value', 'double_value');
   }
 
+  public function attr() {
+    return $this->belongsToMany(Attribute::class, 'attribute_values')->withPivot('boolean_value', 'date_value', 'integer_value', 'string_value', 'decimal_value', 'text_value', 'list_value', 'double_value')->using(AttrVal::class);
+  }
+
   public function attributeValues() {
     return $this->hasMany(AttributeValue::class);
   }

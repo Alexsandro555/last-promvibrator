@@ -19,7 +19,7 @@ class SiteController extends Controller
 
   public function index()
   {
-    $products = Product::with(['files','attributes','productCategory'])->where('active',1)->where('special',1)->get();
+    $products = Product::with(['files','attributes','productCategory'])->where('active',1)->where('special',1)->paginate(9);
     return view('index',compact('products'));
   }
 
