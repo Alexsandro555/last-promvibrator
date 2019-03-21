@@ -12,3 +12,14 @@
     {!! $page->content !!}
   </div>
 @endsection
+
+@section('view.scripts')
+  <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+  <script>
+    $('.tabs').tabs(
+      {
+        active: 0
+      }
+    );
+  </script>
+@endsection
