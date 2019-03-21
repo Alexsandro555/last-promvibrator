@@ -136,7 +136,7 @@ class SiteController extends Controller
   }
 
   public function akzia() {
-      $products = Product::where('onsale', true)->get();
+      $products = Product::with(['files','attributes','productCategory'])->where('onsale', true)->paginate(9);
       return view('index',compact('products'));
   }
 
