@@ -31,6 +31,9 @@ class ProductCategory extends Model
         'max' => 255
       ]
     ],
+    'active' => [
+      'enabled' => true
+    ],
     'description' => [
       'enabled' => true
     ]

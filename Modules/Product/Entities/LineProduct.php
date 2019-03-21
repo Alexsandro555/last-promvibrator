@@ -41,6 +41,9 @@ class LineProduct extends Model
     'price_amount' => [
       'enabled' => true,
     ],
+    'active' => [
+      'enabled' => true
+    ],
     'type_product' => [
       'enabled' => true,
     ]

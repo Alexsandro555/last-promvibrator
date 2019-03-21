@@ -24,7 +24,6 @@ class SiteController extends Controller
   }
 
   public function catalogTypes($slug, Request $request) {
-
     $article = Article::where('url_key',str_replace( '.html', '', $slug))->first();
     if($article) {
       return view('article', compact('article'));

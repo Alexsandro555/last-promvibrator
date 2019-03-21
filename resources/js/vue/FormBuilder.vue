@@ -49,7 +49,7 @@
                 :rules="getRules(field.validations)"
                 :required="getRequired(field.validations)"
                 :error-messages="messages[''+num+'']"
-                @change="updateItem($event,num)"></v-checkbox>
+                @change="updateItem(Boolean($event),num)"></v-checkbox>
     <v-select
       v-else-if="field.type=='selectbox'"
       :name="num+'_id'"

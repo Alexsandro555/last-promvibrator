@@ -40,6 +40,9 @@ class TypeProduct extends Model
     'product_category' => [
       'enabled' => true,
     ],
+    'active' => [
+      'enabled' => true
+    ],
     'tnved' => [
       'enabled' => true,
     ]

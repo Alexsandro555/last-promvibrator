@@ -18,8 +18,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-      view()->share('productCategories', ProductCategory::all());
-      view()->share('articles', Article::all());
+      view()->share('productCategories', ProductCategory::where('active', 1)->get());
+      view()->share('articles', Article::where('active', 1)->get());
 
       /*view()->composer('layouts.master', function($view) {
         $view->with('productCategories', ProductCategory::all());
