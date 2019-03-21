@@ -9,9 +9,9 @@
 
 @section('content')
   <div id="content">
-    <ul class="content-right-tab-ul content-right-tab-ul-a">
-      @if($products->isNotEmpty())
-        <h1>Результаты поиска</h1>
+    @if($products->isNotEmpty())
+      <h1>Результаты поиска</h1>
+      <ul class="content-right-tab-ul content-right-tab-ul-a">
         @foreach($products as $product)
           <li>
             <div class="tab-li-stiker-hit"></div>
@@ -54,9 +54,13 @@
             </div>
           </li>
         @endforeach
-      @else
-        <h1>По вашему запросу ничего не найдено</h1>
-      @endif
     </ul>
+    <div class="content-links">
+      {{ $products->links() }}
+    </div>
+    @else
+      <h1>По вашему запросу ничего не найдено</h1>
+    @endif
+
   </div>
 @endsection

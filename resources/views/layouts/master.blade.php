@@ -19,7 +19,7 @@
         <a href="/">Главная</a>
         <a href="/akzia.php">Акция</a>
         <a href="/order.php">Заказ</a>
-        <a href="">Партнеры</a>
+        <a href="/partners.html">Партнеры</a>
         <a href="/contacts.html">Контакты</a>
       </div>
       <div class="header-top-b">
@@ -81,9 +81,9 @@
     <div class="footer-top">
       <div class="footer-top-block-a">
         <div class="footer-top-block-title">О магазине</div>
-        <a href="">Доставка и оплата</a><br>
-        <a href="">Возврат</a><br>
-        <a href="">Статьи</a><br>
+        <a href="/delivery.html">Доставка и оплата</a><br>
+        <a href="/recovery.html">Возврат</a><br>
+        <a href="#">Статьи</a><br>
         <a href="/contacts.html">Контакты</a><br>
       </div>
 
@@ -107,7 +107,7 @@
       <div class="footer-bottom-menu">
         <a href="/">Главная</a>
         <a href="/order.php">Заказ</a>
-        <a href="">Партнеры</a>
+        <a href="/partners.html">Партнеры</a>
         <a href="/contacts.html">Контакты</a>
       </div>
       <div class="footer-bottom-phone">+7 (495) 123-33-21</div>

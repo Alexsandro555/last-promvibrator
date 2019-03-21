@@ -10,7 +10,7 @@ class FindController extends Controller
   public function index($text='')
   {
     $text = str_replace("_", "/", $text);
-    $products = Product::whereRaw("MATCH (title,description) AGAINST ('\"".$text."\"' IN BOOLEAN MODE) OR title LIKE '%".$text."%'")->get();
+    $products = Product::whereRaw("MATCH (title,description) AGAINST ('\"".$text."\"' IN BOOLEAN MODE) OR title LIKE '%".$text."%'")->paginate(21);
     return view('find', compact('products', 'text'));
   }
 }
