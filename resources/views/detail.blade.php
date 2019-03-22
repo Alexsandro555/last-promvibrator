@@ -87,7 +87,7 @@
       @endforeach
       <div id="tabs-1">
         @if($product->description)
-          {{strip_tags($product->description)}}
+          {!! strip_tags($product->description) !!}
         @elseif($product->lineProduct && $product->lineProduct->description)
           {{$product->lineProduct->description}}
         @elseif($product->typeProduct && $product->typeProduct->description)
