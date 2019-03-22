@@ -38,6 +38,11 @@ class SiteController extends Controller
 
     if($request->has('id')) {
       $slug = str_replace('.php','',$slug);
+
+      /*$isRedirect = ProductCategory::where('old_url', $slug)->first();
+      if($isRedirect) {
+        return redirect('/'.$isRedirect->url_key.'.php?id='.$request->id);
+      }*/
       // проверка на старые id
       $isRedirect = Product::with(['files','attributes.attribute_unit','productCategory','lineProduct', 'typeProduct'])->whereHas('productCategory',function($query) use ($slug) {
         $query->where('url_key',$slug);
@@ -49,7 +54,7 @@ class SiteController extends Controller
         $query->where('url_key',$slug);
       })->where('old_id',$request->id)->where('active',1)->firstOrFail();
       $productCategory = ProductCategory::with(['typeProducts.lineProducts'])->find($product->product_category_id);
-      $groups = AttributeGroup::all();
+      $groups = AttributeGroup::orderBy('sort', 'asc')->get();
       $typeProduct = TypeProduct::with('lineProducts')->find($product->type_product_id);
       $lineProducts = LineProduct::where('type_product_id',$product->type_product_id)->get();
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
@@ -64,6 +69,10 @@ class SiteController extends Controller
     if($isRedirect) {
       return redirect('/');
     }
+    /*$isRedirect = ProductCategory::where('old_url', $slug)->first();
+    if($isRedirect) {
+      return redirect('/'.$isRedirect->url_key);
+    }*/
 
     $productCategory = ProductCategory::where('url_key', $slug)->where('active',1)->first();
     if($productCategory) {
@@ -85,6 +94,10 @@ class SiteController extends Controller
     if($isRedirect) {
       return redirect('/');
     }
+    /*$isRedirect = TypeProduct::where('old_url', $slug)->first();
+    if($isRedirect) {
+      return redirect('/'.$isRedirect->url_key);
+    }*/
 
     $productCategory = ProductCategory::with(['typeProducts'])->whereHas('typeProducts', function($query) use ($slug) {
       $query->where('url_key',$slug);
@@ -107,6 +120,10 @@ class SiteController extends Controller
     if($isRedirect) {
       return redirect('/');
     }
+    /*$isRedirect = LineProduct::where('old_url', $slug)->first();
+    if($isRedirect) {
+      return redirect('/'.$isRedirect->url_key);
+    }*/
 
     $productCategory = ProductCategory::with(['typeProducts.lineProducts'])->whereHas('typeProducts.lineProducts', function($query) use ($slug) {
       $query->where('url_key',$slug);

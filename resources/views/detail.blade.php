@@ -47,7 +47,7 @@
         </div>
         <div class="product-right-buttom">
           <input class="cart-submit" type="submit" value="В корзину" @click.prevent="addCart({{$product->id}})">
-          <input class="click-submit" type="submit" value="Купить в один клик" @click.prevent="addCartOneClick({{$product->id}})">
+          <!--<input class="click-submit" type="submit" value="Купить в один клик" @click.prevent="addCartOneClick({{$product->id}})">-->
         </div>
       </div>
     </div>
