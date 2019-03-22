@@ -24,12 +24,8 @@ class SiteController extends Controller
   }
 
   public function catalogTypes($slug, Request $request) {
-    /*if($slug='mve') {
-      $slug = 'evm';
-    }
-    if($slug='vd') {
-      $slug = 'concrete';
-    }*/
+    str_replace( 'mve', 'evm', $slug);
+    str_replace( 'vd', 'concrete', $slug);
 
     $article = Article::where('url_key',str_replace( '.html', '', $slug))->first();
     if($article) {
