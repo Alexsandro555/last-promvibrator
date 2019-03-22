@@ -41,7 +41,7 @@
       <div id="basket"></div>
       <div class="header-center-phone"><span>+7 (495)</span> 123-33-21</div>
       <div class="header-center-time">Промышленные<br />площадочные<br>вибраторы</div>
-      <a class="header-center-callback2"  href="mailto:info@oooleader.ru">info@oooleader.ru</a>
+      <a class="header-center-callback2"  href="mailto:info@promvibrator.ru">info@promvibrator.ru</a>
       <div id="callback_fixel" style="display:none;"></div>
       <div id="callback" style="display:none;">
         <div class="callback_close"></div>
