@@ -54,11 +54,11 @@
       <div class="header-center-search">
         <span class="span-big">Поиск по каталогу:</span><br>
         <input name="name" type="text" @keyup.enter="search" v-model="searchText"><br>
-        <span class="span-small">Например: </span> MVE 60/3
+        <span class="span-small">Например: </span> EVM 60/3
       </div>
     </div>
     <div class="header-menu">
-      <a class="header-menu-a-a" href="/mve/">Площадочные<br>вибраторы OLI</a>
+      <a class="header-menu-a-a" href="/mve/">Площадочные<br>вибраторы</a>
       <a class="header-menu-a-b" href="/pnevmo/">Пневматические<br>вибраторы</a>
       <a class="header-menu-a-c" href="/aeration/">Системы<br />виброаэрации </a>
       <a class="header-menu-a-d" href="/concrete/">Глубинные<br />вибраторы</a>
