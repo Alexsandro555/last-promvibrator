@@ -11,7 +11,7 @@
           <a href="/{{$product->productCategory->url_key}}.php?id={{$product->old_id}}">{{$product->title}}</a>
         </div>
         <div class="tab-li-img">
-          <a href="/{{$product->url_key}}">
+          <a href="/{{$product->productCategory->url_key}}.php?id={{$product->old_id}}">
             @if($product->files->count()>0)
               @foreach($product->files as $file)
                 @foreach($file->config as $filesItem)
