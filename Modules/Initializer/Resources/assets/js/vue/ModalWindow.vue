@@ -60,8 +60,8 @@
     display: block;
     width: 300px;
     position: fixed;
-    top: 100px;
-    left: 50%;
+    top: 300px;
+    left: 55%;
     margin-left: -400px;
     background-color: white;
     border-radius: 2px;
