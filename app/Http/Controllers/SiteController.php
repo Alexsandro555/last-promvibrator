@@ -135,10 +135,11 @@ class SiteController extends Controller
       $products = Product::with(['files','attributes','lineProduct'])->whereHas('lineProduct', function($query) use ($slug) {
         $query->where('url_key',$slug);
       })->where('active',1)->orderBy('sort', 'asc')->paginate(9);
+      $lineProduct = LineProduct::with('type_product')->where('url_key', $slug)->first();
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
-      /*$breadcrumbs->push(new Breadcrumb($productCategory->title, $productCategory->url_key));
-      $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->title, $productCategory->typeProducts[0]->url_key));
-      $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->lineProducts[0]->title, $productCategory->typeProducts[0]->lineProducts[0]->url_key));*/
+      $breadcrumbs->push(new Breadcrumb($productCategory->title, $productCategory->url_key));
+      $breadcrumbs->push(new Breadcrumb($lineProduct->type_product->title, $lineProduct->type_product->url_key));
+      $breadcrumbs->push(new Breadcrumb($lineProduct->title, $lineProduct->url_key));
       return view('catalog', compact('products', 'productCategory','breadcrumbs'));
     }
 
