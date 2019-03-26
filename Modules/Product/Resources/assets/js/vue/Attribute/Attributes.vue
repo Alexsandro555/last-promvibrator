@@ -118,7 +118,6 @@
     },
     computed: {
       form() {
-        console.log(this.values)
         return this.values.reduce((acc, item, i) =>
             {
               acc[item.attribute_id] = {
