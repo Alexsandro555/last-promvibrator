@@ -5,6 +5,7 @@ namespace Modules\Product\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
+use Modules\Initializer\Observers\ClearCacheObserver;
 use Modules\Product\Entities\Attribute;
 use Modules\Product\Entities\AttributeUnit;
 use Modules\Product\Entities\Product;
@@ -97,8 +98,11 @@ class ProductServiceProvider extends ServiceProvider
     });
 
     ProductCategory::observe(UrlKeyObserver::class);
+    ProductCategory::observe(ClearCacheObserver::class);
     TypeProduct::observe(UrlKeyObserver::class);
+    TypeProduct::observe(ClearCacheObserver::class);
     LineProduct::observe(UrlKeyObserver::class);
+    LineProduct::observe(ClearCacheObserver::class);
     Product::observe(UrlKeyObserver::class);
     Producer::observe(UrlKeyObserver::class);
     AttributeUnit::observe(UrlKeyObserver::class);

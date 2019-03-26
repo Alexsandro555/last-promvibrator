@@ -9,9 +9,9 @@ trait UrlKeyTrait {
       $model->url_key = \Slug::make($normTitle);
     });
 
-    static::updating(function ($model) {
+    /*static::updating(function ($model) {
       $normTitle = str_replace("/"," ",$model->title);
       $model->url_key = \Slug::make($normTitle);
-    });
+    });*/
   }
 }

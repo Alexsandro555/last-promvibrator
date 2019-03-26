@@ -94,7 +94,8 @@
     },
     beforeRouteEnter(to, from, next) {
       next(vm => {
-        vm.initialization()
+        //vm.initialization()
+        vm.loadAll()
         vm.loadRelations().then(response => {
           vm.load().then(response => {
             vm.$store.commit('SET_VARIABLE',{module: 'product_categories', variable: 'loading', value: false}, {root: true})
@@ -104,6 +105,7 @@
     },
     methods: {
       ...mapActions('product_categories', {
+        loadAll: ACTIONS.LOAD_ALL,
         load: GLOBAL.LOAD,
         add: GLOBAL.ADD,
         delete: GLOBAL.DELETE,

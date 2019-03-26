@@ -19,4 +19,21 @@ class ProductCategoryController extends Controller
   {
     $this->model = new ProductCategory;
   }
+
+  public function index(Request $request)
+  {
+    $formFields = collect($this->model->fields);
+    $fields = $this->model
+      ->getColumns(class_basename($this->model))
+      ->filter(function($value, $key) use (&$formFields) {
+        return $formFields->contains($key);
+      });
+    $model = $this->model->all();
+    $rules = $this->model->getRules();
+    return [
+      'fields' => $fields,
+      'model' => $model,
+      'rules' => $rules
+    ];
+  }
 }

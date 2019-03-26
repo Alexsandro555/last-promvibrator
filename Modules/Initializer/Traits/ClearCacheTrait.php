@@ -12,10 +12,10 @@ trait ClearCacheTrait {
       }
     });
 
-    static::updating(function ($model) {
+    /*static::updating(function ($model) {
       if(Cache::has(class_basename($model))) {
         Cache::pull(class_basename($model));
       }
-    });
+    });*/
   }
 }

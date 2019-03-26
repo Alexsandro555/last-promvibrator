@@ -3,7 +3,6 @@
 namespace Modules\Product\Observers;
 
 use Illuminate\Database\Eloquent\Model;
-//use Modules\Product\Entities\ProductCategory;
 
 class UrlKeyObserver {
   public function updating(Model $myModel) {
