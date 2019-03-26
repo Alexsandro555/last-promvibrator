@@ -120,6 +120,7 @@
       form() {
         return this.values.reduce((acc, item, i) =>
             {
+              console.log('wo')
               acc[item.attribute_id] = {
                 product_id: item.product_id,
                 value: item.value,
