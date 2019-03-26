@@ -9,13 +9,17 @@ export default {
   },
   [GLOBAL.LOAD]: ({commit, getters, dispatch, state}) => {
     return new Promise((resolve, reject) => {
-      api.get(getters.config.load).then(response => {
-        dispatch('set', response)
-        commit('SET_VARIABLE',{variable: 'loading', value: false})
-        resolve(response)
-      }).catch(error => {
-        reject(error)
-      })
+      if(!getters.items.length>0) {
+        api.get(getters.config.load).then(response => {
+          dispatch('set', response)
+          commit('SET_VARIABLE',{variable: 'loading', value: false})
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      } else {
+        resolve(getters.items)
+      }
     })
   },
   [GLOBAL.LOAD_RELATIONS]: ({commit, getters, dispatch}) => {

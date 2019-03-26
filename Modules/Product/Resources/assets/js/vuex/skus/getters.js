@@ -8,5 +8,6 @@ export default {
     obj.model="Modules\\Product\\Entities\\Sku"
     obj.upLinks=[]
     return obj
-  }
+  },
+  items: state => state.items
 }

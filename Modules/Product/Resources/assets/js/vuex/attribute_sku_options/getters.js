@@ -8,5 +8,6 @@ export default {
     obj.model='Modules\\Product\\Models\\AttributeSkuOption'
     obj.upLinks=[{column:'sku_id',module:'Sku'},{column:'attribute_id',module:'Attribute'}]
     return obj
-  }
+  },
+  items: state => state.items
 }

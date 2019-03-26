@@ -8,5 +8,6 @@ export default {
     obj.model="Modules\\Product\\Entities\\Attributes"
     obj.upLinks=state.relations
     return obj
-  }
+  },
+  items: state => state.items
 }

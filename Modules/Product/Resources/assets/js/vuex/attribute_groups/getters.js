@@ -7,5 +7,6 @@ export default {
     obj.primary_key="id"
     obj.model="Modules\\Product\\Entities\\AttributeGroup"
     return obj
-  }
+  },
+  items: state => state.items
 }
