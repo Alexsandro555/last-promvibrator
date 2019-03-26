@@ -136,9 +136,9 @@ class SiteController extends Controller
         $query->where('url_key',$slug);
       })->where('active',1)->orderBy('sort', 'asc')->paginate(9);
       $breadcrumbs->push(new Breadcrumb("Главная страница", "/"));
-      $breadcrumbs->push(new Breadcrumb($productCategory->title, $productCategory->url_key));
+      /*$breadcrumbs->push(new Breadcrumb($productCategory->title, $productCategory->url_key));
       $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->title, $productCategory->typeProducts[0]->url_key));
-      $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->lineProducts[0]->title, $productCategory->typeProducts[0]->lineProducts[0]->url_key));
+      $breadcrumbs->push(new Breadcrumb($productCategory->typeProducts[0]->lineProducts[0]->title, $productCategory->typeProducts[0]->lineProducts[0]->url_key));*/
       return view('catalog', compact('products', 'productCategory','breadcrumbs'));
     }
 
