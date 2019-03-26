@@ -191,7 +191,6 @@
       },
       // список линеек продуктов для выбранного типа продукта
       getLineProducts() {
-        console.log( this.form.type_product_id, this.lineProducts.filter(item => item.type_product_id == this.form.type_product_id))
         return this.lineProducts.filter(item => item.type_product_id == this.form.type_product_id)
       },
       getProductCategory() {
