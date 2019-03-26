@@ -22,6 +22,7 @@
         "laravelcollective/html": "^5.7",
         "mlezcano1985/laravel-pivot-soft-deletes": "^1.0",
         "nwidart/laravel-modules": "^4.0",
+        "spatie/laravel-backup": "^5.0.0",
         "staudenmeir/eloquent-has-many-deep": "^1.6",
         "tymon/jwt-auth": "dev-develop",
         "watson/breadcrumbs": "^1.0",
