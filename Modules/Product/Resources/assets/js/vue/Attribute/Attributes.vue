@@ -142,6 +142,7 @@
         menu: false,
         date: null,
         changed: [],
+        isSending: false
       }
     },
     methods: {
