@@ -20,7 +20,7 @@ class ProductCategoryController extends Controller
     $this->model = new ProductCategory;
   }
 
-  public function index(Request $request)
+  /*public function index(Request $request)
   {
     $formFields = collect($this->model->fields);
     $fields = $this->model
@@ -35,5 +35,5 @@ class ProductCategoryController extends Controller
       'model' => $model,
       'rules' => $rules
     ];
-  }
+  }*/
 }

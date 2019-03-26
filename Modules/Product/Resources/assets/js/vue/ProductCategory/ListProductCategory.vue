@@ -94,8 +94,8 @@
     },
     beforeRouteEnter(to, from, next) {
       next(vm => {
-        //vm.initialization()
-        vm.loadAll()
+        vm.initialization()
+        //vm.loadAll()
         vm.loadRelations().then(response => {
           vm.load().then(response => {
             vm.$store.commit('SET_VARIABLE',{module: 'product_categories', variable: 'loading', value: false}, {root: true})
