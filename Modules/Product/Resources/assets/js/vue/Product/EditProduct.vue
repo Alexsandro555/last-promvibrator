@@ -191,6 +191,7 @@
       },
       // список линеек продуктов для выбранного типа продукта
       getLineProducts() {
+        console.log( this.form.type_product_id, this.lineProducts.filter(item => item.type_product_id == this.form.type_product_id))
         return this.lineProducts.filter(item => item.type_product_id == this.form.type_product_id)
       },
       getProductCategory() {
@@ -262,7 +263,7 @@
             'id', 'title', 'price', 'description','qty', 'active', 'sort', 'onsale', 'special', 'need_order', 'product_category_id', 'type_product_id', 'line_product_id', 'vendor', 'IEC'
           ])).then(response => {
             this.isSending = false
-            this.$router.push('list-product')
+            //this.$router.push('list-product')
           })
         }
       },
