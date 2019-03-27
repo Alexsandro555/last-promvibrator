@@ -53,7 +53,7 @@
     </div>
     <h2 class="h2-product">Характиристики и описание</h2>
     <div class="tabs">
-      <ul>
+      <ul class="tabs__header">
         @foreach($groups as $group)
           <li><a href="#tabs-group-{{$group->id}}">{{$group->title}}</a></li>
         @endforeach

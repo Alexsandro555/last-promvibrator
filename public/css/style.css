@@ -1692,7 +1692,7 @@ input:hover.callback-submit {
   min-height: 426px;
 }
 
-.tabs li {
+.tabs .tabs__header>li {
   font-size: 14px;
   font-weight: bold;
   //background-color: #4f4f4f;
@@ -1702,21 +1702,21 @@ input:hover.callback-submit {
   text-transform: uppercase;
 }
 
-.tabs li a {
+.tabs .tabs__header li a {
   display: inline-block;
   color: white;
   text-decoration: none;
   padding: 15px 30px !important;
 }
-.tabs li a:focus, .tabs li a:active {
+.tabs .tabs__header li a:focus, .tabs>ul>li>a:active {
   outline: none !important;
   outline-color: transparent;
 }
 
-.tabs li.ui-tabs-active {
+.tabs .tabs__header li.ui-tabs-active {
   background-color: #f1601d;
 }
-.tabs li.ui-tabs-active a {
+.tabs .tabs__header li.ui-tabs-active a {
   padding-bottom: 25px !important;
 }
 .tabs p {
