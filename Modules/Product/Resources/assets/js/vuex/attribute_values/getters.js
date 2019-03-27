@@ -11,7 +11,16 @@ export default {
     return obj
   },
   [GETTERS.BY_PRODUCT_ID]: (state, commit) => (id) => {
-    return state.items.filter(item => item.product_id == id)
+    return state.items.filter(item => item.product_id === id)
+                      .reduce((acc, item, i) => {
+                          acc[item.attribute_id] = {
+                            product_id: item.product_id,
+                            value: item.value,
+                            attribute_id: item.attribute_id,
+                            id: item.id
+                          };
+                          return acc;
+                      }, {});
   },
   items: state => state.items
 }

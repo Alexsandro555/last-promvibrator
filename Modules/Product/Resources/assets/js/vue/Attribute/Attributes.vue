@@ -113,27 +113,8 @@
       }
     },
     computed: {
-      formComp() {
-        this.form = Object.assign({},this.attributesValues(Number(this.id)).reduce((acc, item, i) =>
-        {
-          acc[item.attribute_id] = {
-            product_id: item.product_id,
-            value: item.value,
-            attribute_id: item.attribute_id,
-            id: item.id
-          };
-          return acc;
-        }, {}));
-        return this.attributesValues(Number(this.id)).reduce((acc, item, i) =>
-            {
-              acc[item.attribute_id] = {
-                product_id: item.product_id,
-                value: item.value,
-                attribute_id: item.attribute_id,
-                id: item.id
-              };
-              return acc;
-            }, {});
+      form() {
+        return this.attributesValues(Number(this.id));
       },
       ...mapGetters('attribute_values', {attributesValues: GETTERS.BY_PRODUCT_ID}),
     },
@@ -149,8 +130,7 @@
         menu: false,
         date: null,
         changed: [],
-        isSending: false,
-        form: {}
+        isSending: false
       }
     },
     methods: {
