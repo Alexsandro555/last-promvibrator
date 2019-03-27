@@ -15,16 +15,6 @@
                     <template v-for="(field, num) in fields">
                       <form-builder :field="field" v-if="num!=='description'" :num="num" :items="form" @update="updateField"></form-builder>
                     </template>
-                    <wysiwyg
-                      :element-id="id"
-                      name="description"
-                      url="image-wysiwyg-upload"
-                      url-file="upload-file"
-                      type-file-upload="file"
-                      type-file="image-wysiwyg"
-                      model="getModel"
-                      v-model="form.description">
-                    </wysiwyg>
                     <v-flex text-xs-left>
                       <v-btn large :class="{primary: valid, 'red lighten-3': !valid}" :disabled="isSending" @click.prevent="onSubmit">Сохранить</v-btn>
                     </v-flex>
@@ -42,7 +32,6 @@
   import {mapActions, mapState, mapGetters, mapMutations} from 'vuex'
   import {ACTIONS, GLOBAL} from '@/constants'
   import formBuilder from '@/vue/FormBuilder'
-  import Wysiwyg from '@/vue/Wysiwyg.vue'
 
   export default {
     props: {
