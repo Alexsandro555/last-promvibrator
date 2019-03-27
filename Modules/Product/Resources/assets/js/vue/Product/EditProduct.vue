@@ -137,7 +137,7 @@
             </v-card>
           </v-tab-item>
           <v-tab-item key="attributes" v-if="form" :value="'attributes'">
-            <product-attributes :attributes="getAttributes" :values="attributesValues(Number(id))" :id="Number(id)"></product-attributes>
+            <product-attributes :attributes="getAttributes" :id="Number(id)"></product-attributes>
           </v-tab-item>
         </v-tabs-items>
       </v-flex>
@@ -226,7 +226,6 @@
       ...mapGetters('line_products', {getLineProductModel: 'getModel'}),
       ...mapGetters('attributables', {transformByKey: 'transformByKey'}),
       ...mapState('attributes', {attributes: 'items'}),
-      ...mapGetters('attribute_values', {attributesValues: GETTERS.BY_PRODUCT_ID}),
       ...mapState('initializer', ['messages']),
       ...mapState('product_categories', {productCategories: 'items'}),
       ...mapState('type_products', {typeProducts: 'items'}),

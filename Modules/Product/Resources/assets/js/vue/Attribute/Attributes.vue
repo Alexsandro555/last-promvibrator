@@ -97,17 +97,13 @@
   </div>
 </template>
 <script>
-  import {mapActions} from 'vuex'
-  import {ACTIONS} from '@product/constants'
+  import {mapActions, mapGetters} from 'vuex'
+  import {ACTIONS, GETTERS} from '@product/constants'
   import {GLOBAL} from '@/constants'
 
   export default {
     props: {
       attributes: {
-        type: Array,
-        default: []
-      },
-      values: {
         type: Array,
         default: []
       },
@@ -117,10 +113,19 @@
       }
     },
     computed: {
-      form() {
-        return this.values.reduce((acc, item, i) =>
+      formComp() {
+        this.form = Object.assign({},this.attributesValues(Number(this.id)).reduce((acc, item, i) =>
+        {
+          acc[item.attribute_id] = {
+            product_id: item.product_id,
+            value: item.value,
+            attribute_id: item.attribute_id,
+            id: item.id
+          };
+          return acc;
+        }, {}));
+        return this.attributesValues(Number(this.id)).reduce((acc, item, i) =>
             {
-              console.log('wo')
               acc[item.attribute_id] = {
                 product_id: item.product_id,
                 value: item.value,
@@ -129,7 +134,8 @@
               };
               return acc;
             }, {});
-      }
+      },
+      ...mapGetters('attribute_values', {attributesValues: GETTERS.BY_PRODUCT_ID}),
     },
     data: function() {
       return {
@@ -143,7 +149,8 @@
         menu: false,
         date: null,
         changed: [],
-        isSending: false
+        isSending: false,
+        form: {}
       }
     },
     methods: {
@@ -155,7 +162,7 @@
         return !!v || 'Обязательное для заполнения'
       },
       getValue(id) {
-        const value = this.values.find(item => item.attribute_id == id)
+        const value = this.attributesValues.find(item => item.attribute_id == id)
         return value?value.value:null
       },
       updateAttribute(value, id) {
