@@ -9,7 +9,7 @@ export default {
         console.log(new Date())
         //commit('SET_ARRAY_VARIABLE', {variable: 'items', value: response})
         console.log(new Date())
-        dispatch('successSaveNotification', response.message, {root: true})
+        //dispatch('successSaveNotification', response.message, {root: true})
       })
     }
 }
