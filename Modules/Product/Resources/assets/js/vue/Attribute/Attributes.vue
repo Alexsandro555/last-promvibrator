@@ -159,14 +159,14 @@
       },
       onSave() {
         if(this.$refs.form.validate()) {
-          //this.isSending = true
+          this.isSending = true
           let result = []
           for(let val in this.form) {
             result.push(this.form[val])
           }
-          /*this.save({product_id: this.id, attributes: result}).then(response => {
+          this.save({product_id: this.id, attributes: result}).then(response => {
             this.isSending = false
-          })*/
+          })
         }
       }
     }

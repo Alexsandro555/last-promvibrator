@@ -7,7 +7,7 @@ export default {
     [ACTIONS.SAVE_DATA]: ({commit, state, getters, dispatch},data) => {
       axios.patch(getters.config.load, data).then(response => response.data).then(response => {
         console.log(new Date())
-        commit('SET_ARRAY_VARIABLE', {variable: 'items', value: response})
+        //commit('SET_ARRAY_VARIABLE', {variable: 'items', value: response})
         console.log(new Date())
         dispatch('successSaveNotification', response.message, {root: true})
       })
