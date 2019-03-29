@@ -109,14 +109,11 @@ Route::middleware('auth:api')->prefix('category')->group(function() {
 
 Route::middleware('auth:api')->prefix('skus')->group(function() {
   Route::get('/', 'SkuController@index');
-  Route::post('/', 'SkuController@save');
-  Route::post('/default', 'SkuController@create');
-  Route::patch('/', 'SkuController@save');
+  Route::post('/default', 'SkuController@save');
+  Route::patch('/', 'SkuController@update');
 });
 
-Route::middleware('auth:api')->prefix('sku-options')->group(function() {
+Route::middleware('auth:api')->prefix('attribute_sku_options')->group(function() {
   Route::get('/', 'SkuOptionsController@index');
-  Route::post('/', 'SkuOptionsController@save');
-  Route::patch('/', 'SkuOptionsController@save');
 });
 

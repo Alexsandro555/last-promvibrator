@@ -37,6 +37,10 @@ class Sku extends Model
     ]
   ];
 
+  public function product() {
+    return $this->belongsTo(Product::class);
+  }
+
   public function attr() {
     return $this->belongsToMany(Attribute::class, 'attribute_sku_options', 'sku_id', 'attribute_id')->withPivot('attribute_list_value_id');
   }

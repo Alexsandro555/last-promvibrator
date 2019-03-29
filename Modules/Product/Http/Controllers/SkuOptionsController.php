@@ -17,15 +17,4 @@ class SkuOptionsController extends Controller
   public function __construct() {
     $this->model = new AttributeSkuOption;
   }
-
-  public function save(Request $request) {
-    $options = $this->model->where('sku_id', $request->id)->get()->toArray();
-    foreach($options as $option) {
-      $option->delete();
-    }
-    foreach($request->options as $option) {
-      $this->model::create($option);
-    }
-    return $this->model->all();
-  }
 }

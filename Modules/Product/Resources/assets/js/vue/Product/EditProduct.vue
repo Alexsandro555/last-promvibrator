@@ -129,7 +129,7 @@
                       </v-form>
                     </v-flex>
                     <v-flex v-if="form" xs12>
-                      <!--<list-sku :id="Number(id)" :attributes="getAttributes"/>-->
+                      <list-sku :id="Number(id)" :attributes="getAttributes"/>
                     </v-flex>
                   </v-layout>
                 </v-container>

@@ -21,4 +21,10 @@ Route::get('product-images/{id}', ['uses' => 'SiteController@images', 'as' => 'p
 
 Route::get('/akzia.php', ['uses' => 'SiteController@akzia', 'as' => 'akzia']);
 
+
+Route::get('/dsds', function () {
+  return redirect('/');
+});
+
+
 Route::get('/{slug}', ['uses' => 'SiteController@catalogTypes', 'as'=> 'catalog-products']);

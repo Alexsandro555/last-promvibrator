@@ -91,9 +91,10 @@ class SiteController extends Controller
       return view('catalog', compact('products','productCategory','breadcrumbs'));
     }
 
-    $isRedirect = ProductCategory::with(['typeProducts'])->whereHas('typeProducts', function($query) use ($slug) {
+    /*$isRedirect = ProductCategory::with(['typeProducts'])->whereHas('typeProducts', function($query) use ($slug) {
       $query->where('url_key',$slug)->where('active',0);
-    })->first();
+    })->first();*/
+    $isRedirect = TypeProduct::where('url_key', $slug)->where('active',0)->first();
     if($isRedirect) {
       return redirect('/');
     }
@@ -117,9 +118,10 @@ class SiteController extends Controller
       return view('catalog', compact('products','productCategory','breadcrumbs'));
     }
 
-    $isRedirect = ProductCategory::with(['typeProducts.lineProducts'])->whereHas('typeProducts.lineProducts', function($query) use ($slug) {
+    /*$isRedirect = ProductCategory::with(['typeProducts.lineProducts'])->whereHas('typeProducts.lineProducts', function($query) use ($slug) {
       $query->where('url_key',$slug);
-    })->where('active',0)->first();
+    })->where('active',0)->first();*/
+    $isRedirect = LineProduct::where('url_key', $slug)->where('active',0)->first();
     if($isRedirect) {
       return redirect('/');
     }

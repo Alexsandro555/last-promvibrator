@@ -47,12 +47,15 @@
     <v-dialog v-model="dialog" max-width="500px">
       <v-card>
         <v-card-title>
-          <span class="headline">Добавление торгового предложения</span>
+          <span class="headline">Торговое предложение</span>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12 sm6 md12>
+                <v-alert v-if="errorMessage" type="error" :value="true">
+                  {{errorMessage}}
+                </v-alert>
                 <v-form ref="form" v-model="valid">
                   <v-text-field
                     name="price"
@@ -140,7 +143,8 @@
         dialog: false,
         validationConvert: new ValidationConvert(),
         valid: false,
-        editedIndex: -1
+        editedIndex: -1,
+        errorMessage:''
       }
     },
     computed: {
@@ -155,7 +159,7 @@
     },
     methods: {
       onAddSku() {
-        this.saveSku({'product_id': Number(this.id)}).then(response => {
+        this.addSku({'product_id': Number(this.id)}).then(response => {
           this.onEdit(response.id)
         })
       },
@@ -183,10 +187,13 @@
       onSave() {
         if(this.$refs.form.validate()) {
           this.isSending = true
-          this.saveSku({sku: this.sku, options: _.values(this.options)}).then(response => {
-            this.isSending = false
-            this.dialog = false
-          })
+          this.saveSku({product_id: this.id, sku: this.sku, options: _.values(this.options)})
+            .then(response => {
+              this.isSending = false
+              this.dialog = false
+            }).catch(error => {
+              this.isSending = false
+            })
         }
       },
       onEdit(id) {
@@ -209,7 +216,7 @@
       },
       ...mapMutations('initializer', {resetError: 'RESET_ERROR'}),
       ...mapActions('skus', {
-        addNewSku: GLOBAL.ADD,
+        addSku: GLOBAL.ADD,
         saveSku: ACTIONS.SAVE_DATA,
         delete: GLOBAL.DELETE
       }),

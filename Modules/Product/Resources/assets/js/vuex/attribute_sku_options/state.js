@@ -10,15 +10,10 @@ var getters=Object.assign({}, module_getters, standart_getters)
 var mutations = Object.assign({}, module_mutations, standart_mutations)
 
 const state = {
-    name: 'SkuOptions',
     items: [],
-    item: {},
-    url: 'api/sku-options',
     init: true,
     fields: [],
-    loading: true,
-    needFields: false,
-    model: 'Modules\\Product\\Entities\\SkuOptions'
+    loading: true
 }
 
 const module = {

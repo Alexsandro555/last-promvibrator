@@ -140,6 +140,7 @@
         vm.loadAttributes()
         vm.loadAttributeValues()
         vm.loadSkus()
+        vm.loadAttributeSkuOptions()
       })
     },
     methods: {
@@ -162,7 +163,8 @@
       ...mapActions('attributables', {loadAttributables: GLOBAL.LOAD}),
       ...mapActions('attributes', {loadAttributes: GLOBAL.LOAD}),
       ...mapActions('attribute_values', {loadAttributeValues: GLOBAL.LOAD}),
-      ...mapActions('skus', {loadSkus: GLOBAL.LOAD})
+      ...mapActions('skus', {loadSkus: GLOBAL.LOAD}),
+      ...mapActions('attribute_sku_options', {loadAttributeSkuOptions: GLOBAL.LOAD})
     }
   }
 </script>
